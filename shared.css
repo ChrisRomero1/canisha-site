@@ -38,30 +38,12 @@ body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--w
   color: var(--white); text-decoration: none;
 }
 .nav-logo span { color: var(--gold); }
-.nav-links { display: flex; gap: 32px; list-style: none; align-items: center; }
+.nav-links { display: flex; gap: 24px; list-style: none; align-items: center; }
 .nav-links a {
-  font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase;
-  color: var(--muted); text-decoration: none; transition: color 0.3s;
+  font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase;
+  color: var(--muted); text-decoration: none; transition: color 0.3s; white-space: nowrap;
 }
 .nav-links a:hover, .nav-links a.active { color: var(--gold); }
-
-/* Dropdown */
-.has-drop { position: relative; }
-.drop {
-  position: absolute; top: calc(100% + 14px); left: 50%;
-  transform: translateX(-50%) translateY(-8px);
-  background: rgba(14,14,14,0.97); backdrop-filter: blur(20px);
-  border: 1px solid var(--line-gold); min-width: 220px; padding: 6px 0;
-  opacity: 0; visibility: hidden; transition: all 0.25s;
-}
-.has-drop:hover .drop { opacity: 1; visibility: visible; transform: translateX(-50%) translateY(0); }
-.drop a {
-  display: block; padding: 11px 20px; font-size: 11px; letter-spacing: 0.14em;
-  text-transform: uppercase; color: var(--muted) !important;
-  border-left: 2px solid transparent; transition: all 0.2s;
-}
-.drop a:hover { color: var(--gold) !important; border-left-color: var(--gold); background: rgba(255,255,255,0.03); }
-.has-drop > a::after { content: ' ↓'; font-size: 9px; opacity: 0.4; }
 .nav-book {
   background: var(--gold) !important; color: #000 !important;
   padding: 10px 26px; font-weight: 500 !important;
