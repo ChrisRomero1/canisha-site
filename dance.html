@@ -2,92 +2,112 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Dance & Fitness | Dimplez So Lovely Enterprises</title>
-  <meta name="description" content="Dance Fusion Fitness classes every Tuesday @ 6PM in Hixson, TN. High-energy movement with Dimplez. Open to all levels. 6210 Hixson Pike #112.">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Dance Fusion Fitness | Dimplez So Lovely</title>
+  <meta name="description" content="Dance Fusion Fitness every Tuesday @ 6PM in Hixson, TN. All levels welcome. 6210 Hixson Pike #112. Follow @exotic_fusion_fitness.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,400;1,700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="shared.css">
   <style>
-    .class-info { background:var(--purple); padding:48px 60px; display:grid; grid-template-columns:repeat(4,1fr); gap:1px; }
-    .class-stat { background:rgba(0,0,0,.3); padding:36px 28px; text-align:center; }
-    .class-stat-num { font-family:'Cormorant Garamond',serif; font-size:44px; font-weight:300; color:var(--white); line-height:1; margin-bottom:8px; display:block; }
-    .class-stat-label { font-size:11px; letter-spacing:.18em; text-transform:uppercase; color:rgba(255,255,255,.6); }
+    .class-block { display: grid; grid-template-columns: 1fr 1fr; min-height: 580px; }
+    .class-img { overflow: hidden; background: #09031A; }
+    .class-img img { width: 100%; height: 100%; object-fit: contain; display: block; }
+    .class-copy { padding: 80px 64px; background: #0E0528; display: flex; flex-direction: column; justify-content: center; }
+    .class-copy h2 { font-family: 'Playfair Display', serif; font-size: clamp(32px, 4vw, 54px); font-weight: 700; line-height: 1.0; margin-bottom: 24px; }
+    .class-copy h2 em { font-style: italic; font-weight: 400; color: var(--pink2); }
+    .class-copy p { font-size: 14px; color: var(--muted); line-height: 1.9; margin-bottom: 14px; font-weight: 300; max-width: 440px; }
 
-    .benefits { display:grid; grid-template-columns:1fr 1fr; gap:1px; background:rgba(255,255,255,.07); margin-top:48px; }
-    .benefit { background:var(--bg2); padding:40px; }
-    .benefit h4 { font-family:'Cormorant Garamond',serif; font-size:24px; font-weight:300; margin-bottom:10px; color:var(--gold); }
-    .benefit p { font-size:13px; color:var(--muted); line-height:1.8; font-weight:300; }
+    .details { background: var(--pink); padding: 60px; display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 0; }
+    .detail { padding: 32px 40px; border-right: 1px solid rgba(255,255,255,.2); }
+    .detail:last-child { border-right: none; }
+    .detail-label { font-size: 10px; letter-spacing: .28em; text-transform: uppercase; color: rgba(255,255,255,.6); margin-bottom: 10px; display: block; }
+    .detail-val { font-family: 'Playfair Display', serif; font-size: clamp(22px, 3vw, 36px); font-weight: 700; color: #fff; }
 
-    .location-block { background:var(--bg3); padding:72px 60px; display:grid; grid-template-columns:1fr 1fr; gap:60px; align-items:center; }
-    .location-block h2 { font-family:'Cormorant Garamond',serif; font-size:clamp(32px,4vw,52px); font-weight:300; line-height:1.05; margin-bottom:20px; }
-    .location-block h2 em { font-style:italic; color:var(--gold); }
-    .location-block p { font-size:14px; color:var(--muted); line-height:1.85; margin-bottom:10px; font-weight:300; }
-    .location-map { height:320px; background:var(--bg2); border:1px solid var(--line); display:flex; align-items:center; justify-content:center; }
-    .location-map iframe { width:100%; height:100%; border:0; }
+    .location { padding: 80px 60px; background: var(--bg2); display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+    .location h2 { font-family: 'Playfair Display', serif; font-size: clamp(30px, 3.5vw, 48px); font-weight: 700; line-height: 1.0; margin-bottom: 20px; }
+    .location h2 em { font-style: italic; font-weight: 400; color: var(--pink2); }
+    .location p { font-size: 14px; color: var(--muted); line-height: 1.85; margin-bottom: 12px; font-weight: 300; }
+    .location-map { height: 320px; overflow: hidden; }
+    .location-map iframe { width: 100%; height: 100%; border: 0; display: block; }
 
-    @media(max-width:860px){
-      .class-info{grid-template-columns:1fr 1fr;padding:32px 24px;}
-      .benefits{grid-template-columns:1fr;}
-      .location-block{grid-template-columns:1fr;padding:52px 24px;gap:32px;}
+    @media(max-width: 860px) {
+      .class-block { grid-template-columns: 1fr; }
+      .class-img { min-height: 300px; }
+      .class-copy { padding: 52px 24px; }
+      .details { grid-template-columns: 1fr; }
+      .detail { border-right: none; border-bottom: 1px solid rgba(255,255,255,.2); padding: 24px; }
+      .detail:last-child { border-bottom: none; }
+      .location { grid-template-columns: 1fr; padding: 60px 24px; gap: 36px; }
     }
   </style>
 </head>
 <body>
 
 <nav class="site-nav" id="nav">
-  <a href="index.html" class="nav-logo">Dimplez <span>So Lovely</span></a>
-  <ul class="nav-links">
+  <ul class="nav-left">
     <li><a href="bartending.html">Bartending</a></li>
     <li><a href="dance.html" class="active">Dance & Fitness</a></li>
-    
+  </ul>
+  <a href="index.html" class="nav-logo">
+    <span class="nav-logo-main">Dimplez</span>
+    <span class="nav-logo-sub">So Lovely ✦</span>
+  </a>
+  <ul class="nav-right">
     <li><a href="culinary.html">Culinary</a></li>
     <li><a href="index.html#about">About</a></li>
-    <li><a href="contact.html" class="nav-book btn">Book Now</a></li>
+    <li><a href="contact.html" class="nav-book">Book Now</a></li>
   </ul>
 </nav>
 
 <div class="page-hero">
-  <div class="page-hero-bg" style="background-image:url('images/dance.jpg');background-color:#180830;background-size:contain;background-repeat:no-repeat;background-position:right center;"></div>
+  <div class="page-hero-bg" style="background-image:url('images/flyer-dance.jpg');background-position:top center;"></div>
   <div class="page-hero-overlay"></div>
   <div class="page-hero-content">
-    <span class="ey">Dance With Dimplez · Exotic Fusion Fitness</span>
-    <h1>Dance & <em>Fitness.</em></h1>
-    <p>High-energy movement experiences built around empowerment, confidence, and fun. Open to ALL levels — come as you are.</p>
-    <a href="contact.html" class="btn btn-purple">Join a Class</a>
+    <h1>Dance Fusion<br><em>Fitness.</em></h1>
+    <p>High-energy movement with Dimplez. Every Tuesday night in Hixson. All levels welcome — come as you are.</p>
+    <a href="contact.html" class="btn-pink">Join a Class</a>
   </div>
 </div>
 
-<div class="class-info">
-  <div class="class-stat"><span class="class-stat-num">Every</span><span class="class-stat-label">Tuesday Night</span></div>
-  <div class="class-stat"><span class="class-stat-num">6PM</span><span class="class-stat-label">Class Start Time</span></div>
-  <div class="class-stat"><span class="class-stat-num">1 Hour</span><span class="class-stat-label">Class Duration</span></div>
-  <div class="class-stat"><span class="class-stat-num">All</span><span class="class-stat-label">Levels Welcome</span></div>
+<div class="ticker">
+  <div class="ticker-inner">
+    <span>Every Tuesday</span><span>6PM Start Time</span><span>1 Hour</span><span>All Levels</span><span>Hixson TN</span><span>Dance Fusion Fitness</span><span>@exotic_fusion_fitness</span><span>Open to All</span>
+    <span>Every Tuesday</span><span>6PM Start Time</span><span>1 Hour</span><span>All Levels</span><span>Hixson TN</span><span>Dance Fusion Fitness</span><span>@exotic_fusion_fitness</span><span>Open to All</span>
+  </div>
 </div>
 
-<section class="section section-dark">
-  <span class="ey">What to Expect</span>
-  <h2 class="h2">Move. Sweat.<br><em>Feel Amazing.</em></h2>
-  <div class="benefits">
-    <div class="benefit"><h4>Dance Instruction</h4><p>Learn real dance moves in a fun, judgment-free environment. Canisha breaks it down and brings the energy every class.</p></div>
-    <div class="benefit"><h4>Cardio Fitness</h4><p>Burn calories while you dance. Heart-pumping, full-body workout that doesn't feel like work.</p></div>
-    <div class="benefit"><h4>Tone & Sculpt</h4><p>Strengthen your body through movement. Regular attendees see real results — without the boring gym routine.</p></div>
-    <div class="benefit"><h4>Community</h4><p>A warm, welcoming group that shows up for each other every week. New members feel at home from day one.</p></div>
-    <div class="benefit"><h4>All Styles</h4><p>Zumba-style, Latin, hip-hop, fusion — every class is a mix of music and movement that keeps it fresh.</p></div>
-    <div class="benefit"><h4>Private Sessions</h4><p>Want one-on-one instruction? Private dance sessions available by appointment. Great for events too.</p></div>
+<div class="class-block">
+  <div class="class-img"><img src="images/dance.jpg" alt="Dance With Dimplez"></div>
+  <div class="class-copy">
+    <h2>Real dancing.<br><em>Real community.</em></h2>
+    <p>Canisha teaches dance-based fitness that actually feels good. Latin, hip-hop, fusion — a different mix every week. You'll burn calories without realizing you're working out.</p>
+    <p>No experience needed. No judgment. Just show up, move your body, and leave feeling better than when you walked in.</p>
+    <a href="https://instagram.com/exotic_fusion_fitness" target="_blank" class="btn-pink" style="margin-top:16px;">Follow @exotic_fusion_fitness</a>
   </div>
-</section>
+</div>
 
-<div class="location-block">
+<div class="details">
+  <div class="detail">
+    <span class="detail-label">When</span>
+    <span class="detail-val">Every Tuesday Night</span>
+  </div>
+  <div class="detail">
+    <span class="detail-label">Time</span>
+    <span class="detail-val">6:00 PM</span>
+  </div>
+  <div class="detail">
+    <span class="detail-label">Duration</span>
+    <span class="detail-val">1 Hour · All Levels</span>
+  </div>
+</div>
+
+<div class="location">
   <div>
-    <span class="ey">Find Us</span>
-    <h2>Every Tuesday<br>@ <em>6PM.</em></h2>
-    <p>📍 <strong style="color:var(--white);">6210 Hixson Pike #112</strong><br>Hixson, TN 37343</p>
-    <p>Workout Anytime gym location. Come ready to move — wear comfortable clothes and bring water.</p>
-    <p style="color:var(--gold);font-size:13px;">IG: <a href="https://instagram.com/exotic_fusion_fitness" target="_blank" style="color:var(--gold);text-decoration:none;">@exotic_fusion_fitness</a></p>
-    <br>
-    <a href="contact.html" class="btn btn-gold">Register or Get Details</a>
+    <h2>Where to<br><em>find us.</em></h2>
+    <p><strong style="color:var(--cream);">6210 Hixson Pike #112</strong><br>Hixson, TN 37343</p>
+    <p>Inside Workout Anytime. Come in comfortable clothes and bring water. That's it.</p>
+    <a href="contact.html" class="btn-pink" style="margin-top:8px;">Get Details</a>
   </div>
   <div class="location-map">
     <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3261!2d-85.24!3d35.13!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2s6210+Hixson+Pike+%23112%2C+Hixson%2C+TN+37343!5e0!3m2!1sen!2sus!4v1" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
@@ -106,8 +126,9 @@
       <a href="mailto:dimplezsolovelyent@gmail.com">Email</a>
     </div>
   </div>
-  <div class="footer-bottom"><p>© <span id="yr"></span> Dimplez So Lovely Enterprises · Chattanooga, TN</p></div>
+  <div class="footer-bottom">© <span id="yr"></span> Dimplez So Lovely Enterprises · Chattanooga, TN</div>
 </footer>
+
 <script>
   const nav = document.getElementById('nav');
   window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 60));

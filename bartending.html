@@ -2,138 +2,96 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Mobile Bartending & Hospitality | Dimplez So Lovely Enterprises</title>
-  <meta name="description" content="Professional mobile bartending and event hospitality in Chattanooga, TN. 20+ years experience. Weddings, parties, corporate events. Call (845) 405-5359.">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Mobile Bartending | Dimplez So Lovely</title>
+  <meta name="description" content="20+ years of mobile bartending in Chattanooga, TN. Weddings, parties, corporate events. Certified, licensed, insured. Call (845) 405-5359.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,400;1,700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="shared.css">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
   <style>
-    .includes-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:rgba(255,255,255,.07); margin-top:56px; }
-    .inc-item { background:var(--bg2); padding:36px 32px; }
-    .inc-item h4 { font-family:'Cormorant Garamond',serif; font-size:22px; font-weight:300; margin-bottom:10px; color:var(--gold); }
-    .inc-item p { font-size:13px; color:var(--muted); line-height:1.8; font-weight:300; }
+    .split { display: grid; grid-template-columns: 1fr 1fr; min-height: 600px; }
+    .split-img { overflow: hidden; }
+    .split-img img { width: 100%; height: 100%; object-fit: contain; display: block; background: #0F0205; }
+    .split-copy { padding: 80px 64px; background: #170308; display: flex; flex-direction: column; justify-content: center; }
+    .split-copy h2 { font-family: 'Playfair Display', serif; font-size: clamp(32px, 4vw, 54px); font-weight: 700; line-height: 1.0; margin-bottom: 24px; }
+    .split-copy h2 em { font-style: italic; font-weight: 400; color: #FCA5A5; }
+    .split-copy p { font-size: 14px; color: var(--muted); line-height: 1.9; margin-bottom: 14px; font-weight: 300; max-width: 440px; }
+    .split-copy ul { list-style: none; margin: 20px 0 32px; display: flex; flex-direction: column; gap: 10px; }
+    .split-copy ul li { font-size: 14px; color: rgba(255,248,240,.7); padding-left: 16px; position: relative; }
+    .split-copy ul li::before { content: '—'; position: absolute; left: 0; color: #FCA5A5; }
 
-    .events-list { display:grid; grid-template-columns:1fr 1fr; gap:1px; background:rgba(255,255,255,.07); margin-top:48px; }
-    .event-item { background:var(--bg3); padding:40px; display:flex; align-items:center; gap:20px; }
-    .event-icon { font-size:28px; flex-shrink:0; }
-    .event-item h4 { font-family:'Cormorant Garamond',serif; font-size:24px; font-weight:300; margin-bottom:6px; }
-    .event-item p { font-size:13px; color:var(--muted); line-height:1.7; font-weight:300; }
+    .cta-strip { background: var(--pink); padding: 80px 60px; display: flex; align-items: center; justify-content: space-between; gap: 40px; }
+    .cta-strip h2 { font-family: 'Playfair Display', serif; font-size: clamp(28px, 4vw, 52px); font-weight: 700; color: #fff; line-height: 1.05; }
+    .cta-strip h2 em { font-style: italic; font-weight: 400; }
+    .cta-info { display: flex; flex-direction: column; gap: 10px; }
+    .cta-info a { font-family: 'Playfair Display', serif; font-size: 22px; font-weight: 300; color: #fff; text-decoration: none; opacity: .85; transition: opacity .3s; }
+    .cta-info a:hover { opacity: 1; }
 
-    .why-grid { display:grid; grid-template-columns:1fr 1fr 1fr; gap:32px; margin-top:48px; }
-    .why-item { padding:36px 28px; border:1px solid var(--line); }
-    .why-item h4 { font-family:'Cormorant Garamond',serif; font-size:22px; font-weight:300; margin-bottom:10px; color:var(--gold); }
-    .why-item p { font-size:13px; color:var(--muted); line-height:1.8; font-weight:300; }
-
-    .contact-strip { background:var(--gold); padding:72px 60px; display:grid; grid-template-columns:1fr 1fr; gap:60px; align-items:center; }
-    .contact-strip h2 { font-family:'Cormorant Garamond',serif; font-size:clamp(32px,4vw,56px); font-weight:300; color:#000; line-height:1.05; }
-    .contact-strip h2 em { font-style:italic; }
-    .contact-strip-info { display:flex; flex-direction:column; gap:16px; }
-    .contact-strip a { font-family:'Cormorant Garamond',serif; font-size:24px; font-weight:300; color:#000; text-decoration:none; }
-
-    @media(max-width:860px){
-      .includes-grid{grid-template-columns:1fr;}
-      .events-list{grid-template-columns:1fr;}
-      .why-grid{grid-template-columns:1fr;}
-      .contact-strip{grid-template-columns:1fr;padding:52px 24px;gap:32px;}
+    @media(max-width: 860px) {
+      .split { grid-template-columns: 1fr; }
+      .split-img { min-height: 300px; }
+      .split-copy { padding: 52px 24px; }
+      .cta-strip { flex-direction: column; text-align: center; padding: 60px 24px; }
     }
   </style>
 </head>
 <body>
 
 <nav class="site-nav" id="nav">
-  <a href="index.html" class="nav-logo">Dimplez <span>So Lovely</span></a>
-  <ul class="nav-links">
+  <ul class="nav-left">
     <li><a href="bartending.html" class="active">Bartending</a></li>
     <li><a href="dance.html">Dance & Fitness</a></li>
-    
+  </ul>
+  <a href="index.html" class="nav-logo">
+    <span class="nav-logo-main">Dimplez</span>
+    <span class="nav-logo-sub">So Lovely ✦</span>
+  </a>
+  <ul class="nav-right">
     <li><a href="culinary.html">Culinary</a></li>
     <li><a href="index.html#about">About</a></li>
-    <li><a href="contact.html" class="nav-book btn">Book Now</a></li>
+    <li><a href="contact.html" class="nav-book">Book Now</a></li>
   </ul>
 </nav>
 
 <div class="page-hero">
-  <div class="page-hero-bg" style="background-image:url('images/cocktailz.jpg');background-color:#1a0830;"></div>
+  <div class="page-hero-bg" style="background-image:url('images/flyer-cocktailz.jpg');background-position:top center;"></div>
   <div class="page-hero-overlay"></div>
   <div class="page-hero-content">
-    <span class="ey">Dimplez Signature Cocktailz</span>
-    <h1>Mobile Bartending<br>& <em>Hospitality.</em></h1>
-    <p>20+ years of craft cocktails, upscale beverage service, and unforgettable guest experiences. Certified, licensed, and insured — ready for any occasion.</p>
-    <a href="contact.html" class="btn btn-gold">Book Now</a>
+    <h1>Mobile Bartending<br><em>& Hospitality.</em></h1>
+    <p>Canisha brings the bar to you. Full setup, craft cocktails, 20+ years behind the bar — certified, licensed, and insured for any occasion.</p>
+    <a href="contact.html" class="btn-pink">Get a Quote</a>
   </div>
 </div>
 
 <div class="ticker">
-  <div class="ticker-t">
-    <s>Craft Cocktails</s><s>Mobile Bar Setup</s><s>Weddings</s><s>Corporate Events</s><s>Private Parties</s><s>Certified & Insured</s><s>20+ Years</s><s>Chattanooga TN</s>
-    <s>Craft Cocktails</s><s>Mobile Bar Setup</s><s>Weddings</s><s>Corporate Events</s><s>Private Parties</s><s>Certified & Insured</s><s>20+ Years</s><s>Chattanooga TN</s>
+  <div class="ticker-inner">
+    <span>Craft Cocktails</span><span>Mobile Bar Setup</span><span>Weddings</span><span>Corporate Events</span><span>Private Parties</span><span>Certified & Insured</span><span>20+ Years</span><span>Chattanooga TN</span>
+    <span>Craft Cocktails</span><span>Mobile Bar Setup</span><span>Weddings</span><span>Corporate Events</span><span>Private Parties</span><span>Certified & Insured</span><span>20+ Years</span><span>Chattanooga TN</span>
   </div>
 </div>
 
-<section class="section section-dark">
-  <span class="ey">What's Included</span>
-  <h2 class="h2">Everything You Need.<br><em>Nothing You Don't.</em></h2>
-  <div class="includes-grid">
-    <div class="inc-item">
-      <h4>Full Bar Setup</h4>
-      <p>Complete mobile bar equipment brought directly to your venue. We handle setup, breakdown, and everything in between.</p>
-    </div>
-    <div class="inc-item">
-      <h4>Craft Cocktails</h4>
-      <p>Classic and signature cocktails, mocktails, beer, and wine service. Custom drink menus available for your event.</p>
-    </div>
-    <div class="inc-item">
-      <h4>Upscale Beverage Service</h4>
-      <p>Professional presentation, glassware, garnishes, mixers, and ice included. Every detail handled with care.</p>
-    </div>
-    <div class="inc-item">
-      <h4>Guest Experience Coordination</h4>
-      <p>We manage the bar so you can enjoy your event. Smooth service from arrival to last call — no stress.</p>
-    </div>
-    <div class="inc-item">
-      <h4>Event Hospitality</h4>
-      <p>Serving staff coordination, catering support, and full hospitality team packages available for large events.</p>
-    </div>
-    <div class="inc-item">
-      <h4>Custom Signature Drinks</h4>
-      <p>Create a signature cocktail for your event with Dimplez. Name it, brand it, make it yours — a personal touch guests remember.</p>
-    </div>
+<div class="split">
+  <div class="split-img"><img src="images/cocktailz.jpg" alt="Dimplez Signature Cocktailz"></div>
+  <div class="split-copy">
+    <h2>She brings the<br><em>whole bar to you.</em></h2>
+    <p>Full mobile bar equipment. Craft and signature cocktails, mocktails, beer, and wine. Custom drink menus. Setup and breakdown handled — you just enjoy the event.</p>
+    <p>Available for weddings, anniversaries, birthday parties, corporate events, graduations, holiday parties, public festivals, and any special occasion worth celebrating right.</p>
+    <ul>
+      <li>Certified, licensed & insured in Tennessee</li>
+      <li>Custom signature cocktail creation</li>
+      <li>Upscale presentation, glassware & garnishes</li>
+      <li>Full setup and breakdown included</li>
+    </ul>
+    <a href="contact.html" class="btn-pink">Book the Bar</a>
   </div>
-</section>
+</div>
 
-<section class="section section-mid">
-  <span class="ey">Events We Service</span>
-  <h2 class="h2">Every Occasion<br><em>Done Right.</em></h2>
-  <div class="events-list">
-    <div class="event-item"><span class="event-icon">💍</span><div><h4>Weddings</h4><p>Full wedding bar service, cocktail hour, reception — everything from setup to the last dance.</p></div></div>
-    <div class="event-item"><span class="event-icon">🎉</span><div><h4>Private Parties</h4><p>Birthdays, anniversaries, reunions. Any celebration worth throwing is worth doing right.</p></div></div>
-    <div class="event-item"><span class="event-icon">💼</span><div><h4>Corporate Events</h4><p>Professional beverage service for company events, holiday parties, and networking gatherings.</p></div></div>
-    <div class="event-item"><span class="event-icon">🎊</span><div><h4>Special Occasions</h4><p>Graduations, baby showers, holiday events — all special occasions welcome.</p></div></div>
-    <div class="event-item"><span class="event-icon">🎭</span><div><h4>Public Events</h4><p>Festivals, community events, pop-ups. We bring the bar to wherever the people are.</p></div></div>
-    <div class="event-item"><span class="event-icon">🌟</span><div><h4>Luxury Events</h4><p>High-end event bartending with premium presentation, custom garnishes, and VIP-level service.</p></div></div>
-  </div>
-</section>
-
-<section class="section section-dark">
-  <span class="ey">Why Dimplez</span>
-  <h2 class="h2">20+ Years.<br><em>Zero Compromise.</em></h2>
-  <div class="why-grid">
-    <div class="why-item"><h4>Certified & Insured</h4><p>Fully licensed and insured to serve alcohol at private and public events in Tennessee. Documentation available on request.</p></div>
-    <div class="why-item"><h4>Master Mixologist</h4><p>20+ years of craft cocktail creation, high-volume service, and mobile bartending experience for upscale events.</p></div>
-    <div class="why-item"><h4>Personalized Service</h4><p>Custom drink menus, signature cocktails, and personalized experience coordination tailored to your event.</p></div>
-  </div>
-</section>
-
-<div class="contact-strip">
-  <h2>Ready to Book<br><em>Your Bar?</em></h2>
-  <div class="contact-strip-info">
+<div class="cta-strip">
+  <h2>Ready to book<br><em>your event?</em></h2>
+  <div class="cta-info">
     <a href="tel:8454055359">(845) 405-5359</a>
     <a href="mailto:dimplezsolovelyent@gmail.com">dimplezsolovelyent@gmail.com</a>
-    <a href="contact.html" class="btn btn-dark" style="align-self:flex-start;margin-top:8px;">Book Now</a>
   </div>
 </div>
 
@@ -149,15 +107,12 @@
       <a href="mailto:dimplezsolovelyent@gmail.com">Email</a>
     </div>
   </div>
-  <div class="footer-bottom"><p>© <span id="yr"></span> Dimplez So Lovely Enterprises · Chattanooga, TN</p></div>
+  <div class="footer-bottom">© <span id="yr"></span> Dimplez So Lovely Enterprises · Chattanooga, TN</div>
 </footer>
 
 <script>
-  gsap.registerPlugin(ScrollTrigger);
   const nav = document.getElementById('nav');
   window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 60));
-  gsap.from('.page-hero-content > *', {opacity:0,y:28,duration:.8,stagger:.14,ease:'power2.out',delay:.3});
-  gsap.from('.inc-item', {scrollTrigger:{trigger:'.includes-grid',start:'top 82%'},opacity:0,y:24,duration:.6,stagger:.08,ease:'power2.out'});
   document.getElementById('yr').textContent = new Date().getFullYear();
 </script>
 </body>
