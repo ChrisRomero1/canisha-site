@@ -145,6 +145,55 @@
 
     .nav-book:hover { background: var(--gold-light) !important; }
 
+    /* NAV DROPDOWN */
+    .nav-dropdown { position: relative; }
+
+    .nav-dropdown-menu {
+      position: absolute;
+      top: calc(100% + 16px);
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgba(17,17,17,0.97);
+      backdrop-filter: blur(20px);
+      border: 1px solid var(--border-gold);
+      min-width: 220px;
+      padding: 8px 0;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.25s, transform 0.25s, visibility 0.25s;
+      transform: translateX(-50%) translateY(-6px);
+    }
+
+    .nav-dropdown:hover .nav-dropdown-menu {
+      opacity: 1;
+      visibility: visible;
+      transform: translateX(-50%) translateY(0);
+    }
+
+    .nav-dropdown-menu a {
+      display: block;
+      padding: 12px 24px;
+      font-size: 11px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--muted) !important;
+      text-decoration: none;
+      transition: color 0.2s, background 0.2s;
+      border-left: 2px solid transparent;
+    }
+
+    .nav-dropdown-menu a:hover {
+      color: var(--gold) !important;
+      background: rgba(255,255,255,0.04);
+      border-left-color: var(--gold);
+    }
+
+    .nav-dropdown > a::after {
+      content: ' ↓';
+      font-size: 9px;
+      opacity: 0.5;
+    }
+
     /* HERO */
     .hero {
       min-height: 100vh;
@@ -1034,7 +1083,15 @@
 <nav id="nav">
   <a href="#" class="nav-logo">Dimplez <span>So Lovely</span></a>
   <ul class="nav-links">
-    <li><a href="#services">Services</a></li>
+    <li class="nav-dropdown">
+      <a href="#services">Services</a>
+      <div class="nav-dropdown-menu">
+        <a href="#services">Mobile Bartending & Hospitality</a>
+        <a href="#services">Dance & Fitness</a>
+        <a href="#services">Spiritual Wellness</a>
+        <a href="#services">Culinary Experiences</a>
+      </div>
+    </li>
     <li><a href="#gallery">Gallery</a></li>
     <li><a href="#process">How to Book</a></li>
     <li><a href="#faq">FAQ</a></li>
