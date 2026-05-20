@@ -43,19 +43,20 @@
     :root {
       --hue-brand: 270;
       --hue-accent: 48;
-      --purple: oklch(52% 0.24 var(--hue-brand));
-      --purple-glow: oklch(52% 0.24 var(--hue-brand) / 0.18);
-      --purple-dim: oklch(52% 0.24 var(--hue-brand) / 0.08);
-      --gold: oklch(72% 0.14 var(--hue-accent));
-      --gold-light: oklch(82% 0.12 var(--hue-accent));
-      --gold-dim: oklch(72% 0.14 var(--hue-accent) / 0.12);
-      --black: #0c0c0c;
-      --surface: #161616;
-      --surface2: #1e1e1e;
-      --border: rgba(255,255,255,0.1);
-      --border-gold: oklch(72% 0.14 var(--hue-accent) / 0.25);
-      --muted: #a0a0a0;
-      --white: #f5f3ef;
+      --purple: oklch(58% 0.28 var(--hue-brand));
+      --purple-glow: oklch(58% 0.28 var(--hue-brand) / 0.45);
+      --purple-dim: oklch(58% 0.28 var(--hue-brand) / 0.12);
+      --purple-vivid: oklch(62% 0.30 var(--hue-brand));
+      --gold: oklch(76% 0.16 var(--hue-accent));
+      --gold-light: oklch(85% 0.14 var(--hue-accent));
+      --gold-dim: oklch(76% 0.16 var(--hue-accent) / 0.15);
+      --black: #111111;
+      --surface: #1a1a1a;
+      --surface2: #222222;
+      --border: rgba(255,255,255,0.11);
+      --border-gold: oklch(76% 0.16 var(--hue-accent) / 0.3);
+      --muted: #b0b0b0;
+      --white: #f6f4f0;
     }
 
     html { scroll-behavior: smooth; }
@@ -295,6 +296,93 @@
     }
 
     .ticker-track span::after { content: '✦'; margin-left: 52px; }
+
+    /* SERVICE PILLARS (top) */
+    .pillars {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      min-height: 340px;
+    }
+
+    .pillar {
+      padding: 52px 40px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      position: relative;
+      overflow: hidden;
+      cursor: pointer;
+      transition: filter 0.3s;
+      text-decoration: none;
+      color: var(--white);
+    }
+
+    .pillar:hover { filter: brightness(1.15); }
+
+    .pillar-1 { background: linear-gradient(145deg, #3d1f8f 0%, #1a0f4a 100%); }
+    .pillar-2 { background: linear-gradient(145deg, #6b2fa0 0%, #2d1060 100%); }
+    .pillar-3 { background: linear-gradient(145deg, #8a3070 0%, #3d1040 100%); }
+    .pillar-4 { background: linear-gradient(145deg, #7a4010 0%, #4a2008 100%); background: linear-gradient(145deg, #5c3090 0%, #1e0d50 100%); }
+
+    .pillar-1 { background: linear-gradient(145deg, oklch(35% 0.28 270) 0%, oklch(20% 0.20 270) 100%); }
+    .pillar-2 { background: linear-gradient(145deg, oklch(40% 0.28 280) 0%, oklch(22% 0.22 275) 100%); }
+    .pillar-3 { background: linear-gradient(145deg, oklch(38% 0.26 295) 0%, oklch(20% 0.18 290) 100%); }
+    .pillar-4 { background: linear-gradient(145deg, oklch(42% 0.22 50) 0%, oklch(22% 0.16 45) 100%); }
+
+    .pillar::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to bottom, transparent 40%, rgba(0,0,0,0.4) 100%);
+    }
+
+    .pillar::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: rgba(255,255,255,0.15);
+    }
+
+    .pillar > * { position: relative; z-index: 1; }
+
+    .pillar-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 52px;
+      font-weight: 300;
+      color: rgba(255,255,255,0.18);
+      line-height: 1;
+    }
+
+    .pillar-bottom { display: flex; flex-direction: column; gap: 12px; }
+
+    .pillar-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 26px;
+      font-weight: 400;
+      line-height: 1.2;
+      letter-spacing: 0.01em;
+    }
+
+    .pillar-tag {
+      font-size: 11px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.55);
+      font-weight: 400;
+    }
+
+    .pillar-arrow {
+      font-size: 20px;
+      color: var(--gold);
+      margin-top: 8px;
+      transition: transform 0.3s;
+      display: inline-block;
+    }
+
+    .pillar:hover .pillar-arrow { transform: translateX(6px); }
 
     /* STATEMENT */
     .statement {
@@ -901,6 +989,11 @@
       .stats { flex-direction: column; }
       .stat-item { border-right: none; border-bottom: 1px solid var(--border); padding: 36px 24px; }
 
+      .pillars { grid-template-columns: 1fr 1fr; min-height: auto; }
+      .pillar { padding: 36px 28px; min-height: 200px; }
+      .pillar-num { font-size: 36px; }
+      .pillar-name { font-size: 20px; }
+
       .gallery-header { grid-template-columns: 1fr; gap: 20px; }
       .gallery-grid {
         grid-template-columns: 1fr 1fr;
@@ -980,6 +1073,42 @@
     <span>Culinary Experiences</span><span>Event Hospitality</span><span>Movement & Empowerment</span>
     <span>Chattanooga TN</span><span>Elevated Experiences</span>
   </div>
+</div>
+
+<!-- SERVICE PILLARS -->
+<div class="pillars">
+  <a href="#services" class="pillar pillar-1">
+    <div class="pillar-num">01</div>
+    <div class="pillar-bottom">
+      <h3 class="pillar-name">Mobile Bartending & Hospitality</h3>
+      <span class="pillar-tag">Weddings · Events · Parties</span>
+      <span class="pillar-arrow">→</span>
+    </div>
+  </a>
+  <a href="#services" class="pillar pillar-2">
+    <div class="pillar-num">02</div>
+    <div class="pillar-bottom">
+      <h3 class="pillar-name">Dance & Fitness</h3>
+      <span class="pillar-tag">Movement · Empowerment</span>
+      <span class="pillar-arrow">→</span>
+    </div>
+  </a>
+  <a href="#services" class="pillar pillar-3">
+    <div class="pillar-num">03</div>
+    <div class="pillar-bottom">
+      <h3 class="pillar-name">Spiritual Wellness</h3>
+      <span class="pillar-tag">Balance · Alignment · Growth</span>
+      <span class="pillar-arrow">→</span>
+    </div>
+  </a>
+  <a href="#services" class="pillar pillar-4">
+    <div class="pillar-num">04</div>
+    <div class="pillar-bottom">
+      <h3 class="pillar-name">Culinary Experiences</h3>
+      <span class="pillar-tag">Culture · Connection · Flavor</span>
+      <span class="pillar-arrow">→</span>
+    </div>
+  </a>
 </div>
 
 <!-- STATEMENT -->
