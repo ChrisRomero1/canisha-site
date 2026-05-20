@@ -24,6 +24,51 @@
     .hero-btns { display:flex; gap:14px; flex-wrap:wrap; }
     .hero-cred { position:absolute; bottom:32px; left:60px; z-index:2; font-size:11px; letter-spacing:.2em; text-transform:uppercase; color:rgba(153,153,153,.45); }
 
+    /* VIDEO HERO */
+    .hero-video { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:.45; z-index:1; }
+    .hero-img { z-index:2; }
+
+    /* SPARKLES */
+    @keyframes sp { 0%,100%{opacity:0;transform:scale(0) rotate(0deg)} 50%{opacity:1;transform:scale(1) rotate(180deg)} }
+    .spark { position:absolute; border-radius:50%; background:var(--gold); pointer-events:none; animation:sp ease-in-out infinite; z-index:3; }
+
+    /* BRANDS SECTION */
+    .brands-section { background:var(--bg2); padding:100px 60px; }
+    .brands-grid { display:flex; gap:32px; flex-wrap:wrap; justify-content:center; margin-top:56px; }
+    .brand-card {
+      width:200px; height:200px; border-radius:50%; overflow:hidden; cursor:pointer;
+      border:2px solid rgba(212,168,67,.2); position:relative;
+      transition:transform .35s, border-color .35s, box-shadow .35s;
+      background:var(--bg3); display:flex; align-items:center; justify-content:center;
+    }
+    .brand-card:hover { transform:translateY(-8px) scale(1.06); border-color:var(--gold); box-shadow:0 20px 60px rgba(212,168,67,.2); }
+    .brand-card img { width:100%; height:100%; object-fit:cover; }
+    .brand-card-label { position:absolute; bottom:0; left:0; right:0; background:linear-gradient(to top,rgba(0,0,0,.8),transparent); padding:20px 12px 14px; text-align:center; font-size:10px; letter-spacing:.14em; text-transform:uppercase; color:var(--gold); opacity:0; transition:opacity .3s; }
+    .brand-card:hover .brand-card-label { opacity:1; }
+    /* fallback when no image */
+    .brand-card .brand-icon { font-size:56px; color:rgba(212,168,67,.2); font-family:'Cormorant Garamond',serif; }
+
+    /* LIGHTBOX */
+    .lb-overlay { position:fixed; inset:0; background:rgba(0,0,0,.92); z-index:999; display:flex; align-items:center; justify-content:center; opacity:0; visibility:hidden; transition:all .3s; padding:24px; }
+    .lb-overlay.open { opacity:1; visibility:visible; }
+    .lb-inner { position:relative; max-width:90vw; max-height:90vh; }
+    .lb-inner img { max-width:100%; max-height:90vh; object-fit:contain; border:1px solid rgba(212,168,67,.2); }
+    .lb-close { position:absolute; top:-44px; right:0; background:none; border:none; color:var(--gold); font-size:28px; cursor:pointer; transition:transform .2s; }
+    .lb-close:hover { transform:rotate(90deg); }
+    .lb-caption { text-align:center; margin-top:16px; font-size:12px; letter-spacing:.18em; text-transform:uppercase; color:var(--muted); }
+
+    /* POP-IN ANIMATION */
+    @keyframes popIn { from{opacity:0;transform:scale(.8) translateY(20px)} to{opacity:1;transform:scale(1) translateY(0)} }
+    .pop-in { opacity:0; }
+    .pop-in.visible { animation:popIn .6s cubic-bezier(.175,.885,.32,1.275) forwards; }
+
+    /* COUNTER */
+    .counter-row { display:flex; gap:0; border-top:1px solid rgba(255,255,255,.08); border-bottom:1px solid rgba(255,255,255,.08); margin-top:56px; }
+    .counter-item { flex:1; padding:48px 36px; text-align:center; border-right:1px solid rgba(255,255,255,.08); }
+    .counter-item:last-child { border-right:none; }
+    .counter-num { font-family:'Cormorant Garamond',serif; font-size:clamp(44px,6vw,72px); font-weight:300; color:var(--gold); line-height:1; display:block; }
+    .counter-label { font-size:11px; letter-spacing:.2em; text-transform:uppercase; color:var(--muted); margin-top:8px; display:block; }
+
     .svc-grid { display:grid; grid-template-columns:1fr 1fr; gap:1px; background:rgba(255,255,255,.06); margin-top:56px; }
     .svc-card { background:var(--bg2); padding:0; text-decoration:none; color:var(--white); position:relative; overflow:hidden; transition:background .35s; display:flex; flex-direction:column; }
     .svc-card:hover { background:var(--bg3); }
@@ -100,7 +145,29 @@
   </ul>
 </nav>
 
+<!-- LIGHTBOX -->
+<div class="lb-overlay" id="lb" onclick="lbClose(event)">
+  <div class="lb-inner">
+    <button class="lb-close" onclick="document.getElementById('lb').classList.remove('open')">✕</button>
+    <img id="lb-img" src="" alt="">
+    <p class="lb-caption" id="lb-cap"></p>
+  </div>
+</div>
+
 <section class="hero">
+  <!-- swap src below for her video when ready -->
+  <video class="hero-video" autoplay muted loop playsinline poster="images/hero.jpg">
+    <source src="images/hero-video.mp4" type="video/mp4">
+  </video>
+  <!-- sparkle dots -->
+  <div class="spark" style="width:3px;height:3px;top:15%;left:12%;animation-duration:3.2s;animation-delay:0s;"></div>
+  <div class="spark" style="width:4px;height:4px;top:25%;left:70%;animation-duration:4s;animation-delay:.8s;"></div>
+  <div class="spark" style="width:2px;height:2px;top:55%;left:85%;animation-duration:3.5s;animation-delay:1.6s;"></div>
+  <div class="spark" style="width:3px;height:3px;top:70%;left:30%;animation-duration:4.2s;animation-delay:2.4s;"></div>
+  <div class="spark" style="width:2px;height:2px;top:20%;left:48%;animation-duration:3.8s;animation-delay:.5s;"></div>
+  <div class="spark" style="width:4px;height:4px;top:40%;left:8%;animation-duration:5s;animation-delay:2s;"></div>
+  <div class="spark" style="width:3px;height:3px;top:80%;left:62%;animation-duration:3.6s;animation-delay:1.2s;"></div>
+  <div class="spark" style="width:2px;height:2px;top:60%;left:95%;animation-duration:4.5s;animation-delay:3s;"></div>
   <div class="hero-img"></div>
   <div class="hero-text" id="ht">
     <span class="ey">Dimplez So Lovely Enterprises · Chattanooga, TN</span>
@@ -120,6 +187,14 @@
     <s>Mobile Bartending</s><s>Dance & Fitness</s><s>Spiritual Wellness</s><s>Culinary Experiences</s><s>20+ Years</s><s>Chattanooga TN</s><s>Certified & Insured</s><s>Vibes Love & Moments</s>
     <s>Mobile Bartending</s><s>Dance & Fitness</s><s>Spiritual Wellness</s><s>Culinary Experiences</s><s>20+ Years</s><s>Chattanooga TN</s><s>Certified & Insured</s><s>Vibes Love & Moments</s>
   </div>
+</div>
+
+<!-- COUNTERS -->
+<div class="counter-row">
+  <div class="counter-item"><span class="counter-num" data-target="20" data-suffix="+">0</span><span class="counter-label">Years Experience</span></div>
+  <div class="counter-item"><span class="counter-num" data-target="4" data-suffix="">0</span><span class="counter-label">Service Pillars</span></div>
+  <div class="counter-item"><span class="counter-num" data-target="5" data-suffix="★">0</span><span class="counter-label">Star Rated</span></div>
+  <div class="counter-item"><span class="counter-num" data-suffix="%">100</span><span class="counter-label">Passion Driven</span></div>
 </div>
 
 <section class="section section-dark" id="services">
@@ -188,6 +263,39 @@
   </div>
 </div>
 
+<!-- BRANDS -->
+<section class="brands-section">
+  <span class="ey">The Brand Family</span>
+  <h2 class="h2">Everything <em>Dimplez.</em></h2>
+  <div class="brands-grid">
+    <div class="brand-card pop-in" onclick="lbOpen('images/logo-main.png','Dimplez So Lovely Enterprises')">
+      <img src="images/logo-main.png" alt="Dimplez So Lovely Enterprises" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+      <span class="brand-icon" style="display:none;">✦</span>
+      <span class="brand-card-label">DSL Enterprises</span>
+    </div>
+    <div class="brand-card pop-in" onclick="lbOpen('images/logo-cocktailz.png','Dimplez Signature Cocktailz')">
+      <img src="images/logo-cocktailz.png" alt="Dimplez Signature Cocktailz" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+      <span class="brand-icon" style="display:none;">🍹</span>
+      <span class="brand-card-label">Signature Cocktailz</span>
+    </div>
+    <div class="brand-card pop-in" onclick="lbOpen('images/logo-dance.png','Dance With Dimplez')">
+      <img src="images/logo-dance.png" alt="Dance With Dimplez" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+      <span class="brand-icon" style="display:none;">💃</span>
+      <span class="brand-card-label">Dance With Dimplez</span>
+    </div>
+    <div class="brand-card pop-in" onclick="lbOpen('images/logo-dishez.png','Dimplez Delightful Dishez')">
+      <img src="images/logo-dishez.png" alt="Dimplez Delightful Dishez" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+      <span class="brand-icon" style="display:none;">🍽️</span>
+      <span class="brand-card-label">Delightful Dishez</span>
+    </div>
+    <div class="brand-card pop-in" onclick="lbOpen('images/logo-podcast.png','Talk A\'bout It w/ Dimplez')">
+      <img src="images/logo-podcast.png" alt="Talk A'bout It w/ Dimplez" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+      <span class="brand-icon" style="display:none;">🎙️</span>
+      <span class="brand-card-label">Talk A'bout It</span>
+    </div>
+  </div>
+</section>
+
 <div class="dance-cta">
   <div class="dance-img"></div>
   <div class="dance-text">
@@ -249,11 +357,54 @@
 
 <script>
   gsap.registerPlugin(ScrollTrigger);
+
+  // Nav scroll
   const nav = document.getElementById('nav');
   window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 60));
-  gsap.from('#ht > *', {opacity:0,y:28,duration:.8,stagger:.14,ease:'power2.out',delay:.2});
-  gsap.from('.svc-card', {scrollTrigger:{trigger:'.svc-grid',start:'top 82%'},opacity:0,y:32,duration:.7,stagger:.1,ease:'power2.out'});
-  gsap.from('.about-text > *', {scrollTrigger:{trigger:'.about-text',start:'top 80%'},opacity:0,y:24,duration:.7,stagger:.1,ease:'power2.out'});
+
+  // Hero entrance
+  gsap.from('#ht > *', {opacity:0,y:32,duration:.9,stagger:.15,ease:'power3.out',delay:.25});
+
+  // Scroll reveals
+  gsap.from('.svc-card', {scrollTrigger:{trigger:'.svc-grid',start:'top 82%'},opacity:0,y:40,duration:.7,stagger:.12,ease:'power2.out'});
+  gsap.from('.about-text > *', {scrollTrigger:{trigger:'.about-text',start:'top 80%'},opacity:0,y:28,duration:.7,stagger:.1,ease:'power2.out'});
+  gsap.from('.pull-quote', {scrollTrigger:{trigger:'.testi-wrap',start:'top 80%'},opacity:0,y:32,duration:.9,ease:'power2.out'});
+  gsap.from('.dance-text > *', {scrollTrigger:{trigger:'.dance-text',start:'top 82%'},opacity:0,x:-28,duration:.7,stagger:.1,ease:'power2.out'});
+
+  // Brand cards pop-in with stagger
+  gsap.from('.brand-card', {
+    scrollTrigger:{trigger:'.brands-section',start:'top 80%'},
+    opacity:0, scale:.75, duration:.65, stagger:.1, ease:'back.out(1.4)'
+  });
+
+  // Counter animations
+  document.querySelectorAll('.counter-num[data-target]').forEach(el => {
+    const target = +el.dataset.target;
+    const suffix = el.dataset.suffix || '';
+    ScrollTrigger.create({
+      trigger: el, start:'top 85%', once:true,
+      onEnter: () => gsap.to({val:0},{val:target,duration:1.8,ease:'power2.out',
+        onUpdate:function(){ el.textContent = Math.round(this.targets()[0].val) + suffix; }
+      })
+    });
+  });
+
+  // Lightbox
+  function lbOpen(src, cap) {
+    document.getElementById('lb-img').src = src;
+    document.getElementById('lb-cap').textContent = cap;
+    document.getElementById('lb').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function lbClose(e) {
+    if(e.target === document.getElementById('lb') || e.target.classList.contains('lb-close')) {
+      document.getElementById('lb').classList.remove('open');
+      document.body.style.overflow = '';
+    }
+  }
+  window.lbOpen = lbOpen;
+  window.lbClose = lbClose;
+
   document.getElementById('yr').textContent = new Date().getFullYear();
 </script>
 </body>
