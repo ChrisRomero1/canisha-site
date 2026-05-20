@@ -2,375 +2,328 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Dimplez So Lovely Enterprises | Chattanooga, TN</title>
-  <meta name="description" content="Boss-driven lifestyle brand blending mobile bartending, dance & fitness, and culinary experiences in Chattanooga, TN.">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Dimplez So Lovely | Chattanooga, TN</title>
+  <meta name="description" content="Canisha aka Dimplez — mobile bartending, dance fitness, and culinary experiences in Chattanooga, TN. Certified, licensed, insured. 20+ years.">
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"LocalBusiness","name":"Dimplez So Lovely Enterprises","telephone":"845-405-5359","email":"dimplezsolovelyent@gmail.com","address":{"@type":"PostalAddress","addressLocality":"Chattanooga","addressRegion":"TN","addressCountry":"US"}}</script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="shared.css">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,400;1,700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
   <style>
-    .hero { min-height:100vh; display:grid; grid-template-columns:1fr 1fr; position:relative; overflow:hidden; background:var(--bg); }
-    .hero-img { position:relative; min-height:100vh; background:url('images/hero.jpg') center top/cover no-repeat; background-color:#1a0830; }
-    .hero-img::after { content:''; position:absolute; inset:0; background:linear-gradient(to right, transparent 55%, var(--bg) 100%); }
-    .hero-text { display:flex; flex-direction:column; justify-content:center; padding:120px 60px 80px 40px; position:relative; z-index:2; }
-    .hero-text h1 { font-family:'Cormorant Garamond',serif; font-size:clamp(48px,6vw,86px); font-weight:300; line-height:.95; letter-spacing:-.02em; margin-bottom:24px; }
-    .hero-text h1 em { font-style:italic; color:var(--purple2); display:block; }
-    .hero-div { width:50px; height:1px; background:var(--purple); margin-bottom:20px; opacity:.6; }
-    .hero-sub { font-size:14px; color:rgba(244,240,248,.6); line-height:1.85; margin-bottom:36px; font-weight:300; max-width:360px; }
-    .hero-btns { display:flex; gap:14px; flex-wrap:wrap; }
-    .hero-cred { position:absolute; bottom:32px; left:60px; z-index:2; font-size:11px; letter-spacing:.2em; text-transform:uppercase; color:rgba(153,153,153,.45); }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-    /* VIDEO HERO */
-    .hero-video { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:.45; z-index:1; }
-    .hero-img { z-index:2; }
-
-    /* SPARKLES */
-    @keyframes sp { 0%,100%{opacity:0;transform:scale(0) rotate(0deg)} 50%{opacity:1;transform:scale(1) rotate(180deg)} }
-    .spark { position:absolute; border-radius:50%; background:var(--gold); pointer-events:none; animation:sp ease-in-out infinite; z-index:3; }
-
-    /* BRANDS SECTION */
-    .brands-section { background:var(--bg2); padding:100px 60px; }
-    .brands-grid { display:flex; gap:32px; flex-wrap:wrap; justify-content:center; margin-top:56px; }
-    .brand-card {
-      width:200px; height:200px; border-radius:50%; overflow:hidden; cursor:pointer;
-      border:2px solid rgba(212,168,67,.2); position:relative;
-      transition:transform .35s, border-color .35s, box-shadow .35s;
-      background:var(--bg3); display:flex; align-items:center; justify-content:center;
+    :root {
+      --bg:      #0C0418;
+      --bg2:     #130A24;
+      --purple:  #9333EA;
+      --purple2: #C084FC;
+      --pink:    #DB2777;
+      --pink2:   #F472B6;
+      --cream:   #FFF8F0;
+      --muted:   rgba(255,248,240,0.52);
+      --line:    rgba(147,51,234,0.18);
     }
-    .brand-card:hover { transform:translateY(-8px) scale(1.06); border-color:var(--gold); box-shadow:0 20px 60px rgba(212,168,67,.2); }
-    .brand-card img { width:100%; height:100%; object-fit:cover; }
-    .brand-card-label { position:absolute; bottom:0; left:0; right:0; background:linear-gradient(to top,rgba(0,0,0,.8),transparent); padding:20px 12px 14px; text-align:center; font-size:10px; letter-spacing:.14em; text-transform:uppercase; color:var(--gold); opacity:0; transition:opacity .3s; }
-    .brand-card:hover .brand-card-label { opacity:1; }
-    /* fallback when no image */
-    .brand-card .brand-icon { font-size:56px; color:rgba(212,168,67,.2); font-family:'Cormorant Garamond',serif; }
 
-    /* LIGHTBOX */
-    .lb-overlay { position:fixed; inset:0; background:rgba(0,0,0,.92); z-index:999; display:flex; align-items:center; justify-content:center; opacity:0; visibility:hidden; transition:all .3s; padding:24px; }
-    .lb-overlay.open { opacity:1; visibility:visible; }
-    .lb-inner { position:relative; max-width:90vw; max-height:90vh; }
-    .lb-inner img { max-width:100%; max-height:90vh; object-fit:contain; border:1px solid rgba(212,168,67,.2); }
-    .lb-close { position:absolute; top:-44px; right:0; background:none; border:none; color:var(--gold); font-size:28px; cursor:pointer; transition:transform .2s; }
-    .lb-close:hover { transform:rotate(90deg); }
-    .lb-caption { text-align:center; margin-top:16px; font-size:12px; letter-spacing:.18em; text-transform:uppercase; color:var(--muted); }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--cream); overflow-x: hidden; }
 
-    /* POP-IN ANIMATION */
-    @keyframes popIn { from{opacity:0;transform:scale(.8) translateY(20px)} to{opacity:1;transform:scale(1) translateY(0)} }
-    .pop-in { opacity:0; }
-    .pop-in.visible { animation:popIn .6s cubic-bezier(.175,.885,.32,1.275) forwards; }
+    /* NAV */
+    .nav { position: fixed; top: 0; width: 100%; z-index: 200; padding: 22px 52px; display: flex; align-items: center; justify-content: space-between; transition: all .4s; }
+    .nav.stuck { background: rgba(12,4,24,.95); backdrop-filter: blur(18px); border-bottom: 1px solid var(--line); padding: 14px 52px; }
+    .nav-logo { font-family: 'Playfair Display', serif; font-size: 17px; font-style: italic; color: var(--cream); text-decoration: none; letter-spacing: .02em; }
+    .nav-logo span { color: var(--purple2); font-style: normal; }
+    .nav-links { display: flex; gap: 28px; list-style: none; align-items: center; }
+    .nav-links a { font-size: 10.5px; letter-spacing: .18em; text-transform: uppercase; color: var(--muted); text-decoration: none; transition: color .3s; white-space: nowrap; }
+    .nav-links a:hover { color: var(--pink2); }
+    .nav-book { background: var(--pink) !important; color: #fff !important; padding: 10px 28px; font-weight: 500 !important; letter-spacing: .14em !important; }
+    .nav-book:hover { background: #be185d !important; color: #fff !important; }
 
-    /* QUOTE BAND */
-    .quote-band { padding:52px 60px; background:var(--bg2); border-top:1px solid rgba(255,255,255,.06); border-bottom:1px solid rgba(255,255,255,.06); display:flex; align-items:center; gap:24px; }
-    .quote-band-text { font-family:'Cormorant Garamond',serif; font-size:clamp(22px,2.8vw,36px); font-style:italic; font-weight:300; color:rgba(244,240,248,.85); }
-    .quote-band-text span { color:var(--purple2); }
-    .quote-band-line { flex:1; height:1px; background:rgba(212,168,67,.2); }
+    /* HERO */
+    .hero { min-height: 100vh; display: grid; grid-template-columns: 1fr 1fr; position: relative; overflow: hidden; background: var(--bg); }
+    .hero-photo { position: relative; overflow: hidden; min-height: 100vh; }
+    .hero-photo img { width: 100%; height: 100%; object-fit: cover; object-position: center top; display: block; }
+    .hero-photo::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to right, transparent 50%, var(--bg) 100%), linear-gradient(to top, var(--bg) 0%, transparent 30%); }
+    .hero-copy { display: flex; flex-direction: column; justify-content: center; padding: 140px 64px 80px 48px; z-index: 2; }
+    .hero-tag { font-size: 10px; letter-spacing: .38em; text-transform: uppercase; color: var(--purple2); margin-bottom: 32px; display: block; }
+    .hero-h1 { font-family: 'Playfair Display', serif; font-size: clamp(52px, 6vw, 86px); font-weight: 900; line-height: .9; margin-bottom: 32px; }
+    .hero-h1 em { font-style: italic; font-weight: 400; color: var(--pink2); display: block; margin-top: 8px; }
+    .hero-sub { font-size: 14px; color: var(--muted); line-height: 1.85; max-width: 340px; margin-bottom: 44px; font-weight: 300; }
+    .hero-btns { display: flex; gap: 14px; flex-wrap: wrap; }
+    .btn-pink { background: var(--pink); color: #fff; padding: 16px 38px; font-size: 11px; letter-spacing: .2em; text-transform: uppercase; text-decoration: none; display: inline-block; transition: all .3s; font-weight: 500; font-family: 'DM Sans', sans-serif; }
+    .btn-pink:hover { background: #be185d; transform: translateY(-2px); }
+    .btn-ghost { border: 1px solid rgba(255,255,255,.2); color: var(--cream); padding: 16px 38px; font-size: 11px; letter-spacing: .2em; text-transform: uppercase; text-decoration: none; display: inline-block; transition: all .3s; font-family: 'DM Sans', sans-serif; }
+    .btn-ghost:hover { border-color: var(--purple2); color: var(--purple2); transform: translateY(-2px); }
+    .hero-cred { font-size: 10px; letter-spacing: .22em; text-transform: uppercase; color: rgba(255,248,240,.18); margin-top: 48px; }
 
-    .svc-list { margin-top:56px; border-top:1px solid rgba(255,255,255,.07); }
-    .svc-row { display:grid; grid-template-columns:1fr 1fr; border-bottom:1px solid rgba(255,255,255,.07); min-height:380px; }
-    .svc-row.flip { direction:rtl; }
-    .svc-row.flip > * { direction:ltr; }
-    .svc-visual { overflow:hidden; position:relative; background:var(--bg3); }
-    .svc-visual img { width:100%; height:100%; object-fit:contain; display:block; transition:transform .7s ease; background:var(--bg3); }
-    .svc-row:hover .svc-visual img { transform:scale(1.04); }
-    .svc-visual-fallback { width:100%; height:100%; min-height:380px; display:flex; align-items:center; justify-content:center; font-family:'Cormorant Garamond',serif; font-size:80px; color:rgba(212,168,67,.12); }
-    .svc-info { padding:52px 56px; display:flex; flex-direction:column; justify-content:center; background:var(--bg2); text-decoration:none; color:var(--white); position:relative; transition:background .3s; border-left:3px solid transparent; }
-    .svc-info:hover { background:var(--bg3); }
-    .svc-tag { font-size:10px; letter-spacing:.3em; text-transform:uppercase; margin-bottom:18px; display:block; }
-    .svc-name { font-family:'Cormorant Garamond',serif; font-size:clamp(28px,3.5vw,42px); font-weight:300; line-height:1.05; margin-bottom:16px; }
-    .svc-desc { font-size:13px; color:var(--muted); line-height:1.85; font-weight:300; max-width:400px; }
-    .svc-cta { margin-top:28px; font-size:11px; letter-spacing:.22em; text-transform:uppercase; display:inline-flex; align-items:center; gap:8px; }
-    .svc-cta::after { content:'→'; transition:transform .3s; }
-    .svc-info:hover .svc-cta::after { transform:translateX(5px); }
-    /* per-section color vibes */
-    .svc-row.bartending .svc-info { border-left-color:var(--crimson); background:linear-gradient(105deg,rgba(155,27,48,.08),var(--bg2)); }
-    .svc-row.bartending .svc-tag, .svc-row.bartending .svc-cta { color:var(--crimson2); }
-    .svc-row.bartending .svc-name em { color:var(--crimson2); }
-    .svc-row.dance .svc-info { border-left-color:var(--pink); background:linear-gradient(105deg,rgba(217,70,239,.08),var(--bg2)); }
-    .svc-row.dance .svc-tag, .svc-row.dance .svc-cta { color:var(--pink); }
-    .svc-row.culinary .svc-info { border-left-color:var(--amber); background:linear-gradient(105deg,rgba(200,134,10,.08),var(--bg2)); }
-    .svc-row.culinary .svc-tag, .svc-row.culinary .svc-cta { color:var(--amber2); }
-    .svc-row.culinary .svc-name em { color:var(--amber2); }
-    /* also flip border side for flipped rows */
-    .svc-row.flip .svc-info { border-left:none; border-right:3px solid transparent; }
-    .svc-row.flip.dance .svc-info { border-right-color:var(--pink); background:linear-gradient(255deg,rgba(217,70,239,.08),var(--bg2)); }
-    .svc-row.flip.culinary .svc-info { border-right-color:var(--amber); background:linear-gradient(255deg,rgba(200,134,10,.08),var(--bg2)); }
+    /* TICKER */
+    @keyframes tick { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+    .ticker { background: var(--purple); padding: 13px 0; overflow: hidden; white-space: nowrap; }
+    .ticker-inner { display: inline-flex; animation: tick 28s linear infinite; }
+    .ticker-inner span { font-size: 11px; letter-spacing: .22em; text-transform: uppercase; color: rgba(255,255,255,.88); padding: 0 40px; font-weight: 500; font-family: 'DM Sans', sans-serif; }
+    .ticker-inner span::after { content: '✦'; margin-left: 40px; color: var(--pink2); }
 
-    .about-split { display:grid; grid-template-columns:1fr 1fr; }
-    .about-img { min-height:500px; background:url('images/hero.jpg') center top/cover no-repeat; background-color:#1a0830; }
-    .about-text { padding:80px 60px; background:var(--bg2); display:flex; flex-direction:column; justify-content:center; }
-    .about-text h2 { font-family:'Cormorant Garamond',serif; font-size:clamp(34px,4vw,56px); font-weight:300; line-height:1.05; margin-bottom:20px; }
-    .about-text h2 em { font-style:italic; color:var(--purple2); }
-    .about-text p { font-size:14px; color:var(--muted); line-height:1.9; margin-bottom:14px; font-weight:300; }
-    .about-creds { display:flex; gap:36px; margin-top:32px; flex-wrap:wrap; }
-    .cred-num { font-family:'Cormorant Garamond',serif; font-size:44px; font-weight:300; color:var(--purple2); line-height:1; display:block; }
-    .cred-label { font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:var(--muted); }
+    /* INTRO QUOTE */
+    .intro { padding: 80px 60px; background: var(--bg2); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); text-align: center; }
+    .intro p { font-family: 'Playfair Display', serif; font-size: clamp(20px, 2.6vw, 34px); font-style: italic; font-weight: 400; color: rgba(255,248,240,.75); max-width: 740px; margin: 0 auto; line-height: 1.6; }
+    .intro p strong { color: var(--purple2); font-style: normal; font-weight: 700; }
 
-    .testi-wrap { background:var(--bg3); padding:100px 60px; text-align:center; }
-    .pull-quote { max-width:740px; margin:0 auto; }
-    .pull-quote::before { content:'\201C'; font-family:'Cormorant Garamond',serif; font-size:120px; line-height:.8; color:rgba(212,168,67,.1); display:block; }
-    .pull-quote blockquote { font-family:'Cormorant Garamond',serif; font-size:clamp(20px,2.8vw,34px); font-style:italic; font-weight:300; line-height:1.55; color:rgba(244,240,248,.88); margin-bottom:24px; margin-top:4px; }
-    .pull-quote cite { font-size:11px; letter-spacing:.24em; text-transform:uppercase; color:var(--gold); font-style:normal; }
-    .stars { color:var(--gold); font-size:13px; margin-bottom:8px; }
+    /* SERVICES — full bleed, each its own world */
+    .svc { display: grid; grid-template-columns: 1fr 1fr; min-height: 65vh; }
+    .svc.flip { direction: rtl; }
+    .svc.flip > * { direction: ltr; }
+    .svc-visual { position: relative; overflow: hidden; }
+    .svc-visual img { width: 100%; height: 100%; object-fit: contain; display: block; }
+    .svc-body { display: flex; flex-direction: column; justify-content: center; padding: 80px 60px; }
+    .svc-tag { font-size: 10px; letter-spacing: .34em; text-transform: uppercase; margin-bottom: 22px; display: block; }
+    .svc-title { font-family: 'Playfair Display', serif; font-size: clamp(30px, 3.8vw, 52px); font-weight: 700; line-height: 1.05; margin-bottom: 20px; }
+    .svc-title em { font-style: italic; font-weight: 400; }
+    .svc-text { font-size: 14px; line-height: 1.85; color: rgba(255,248,240,.55); max-width: 380px; margin-bottom: 32px; font-weight: 300; }
+    .svc-cta { font-size: 11px; letter-spacing: .24em; text-transform: uppercase; text-decoration: none; display: inline-flex; align-items: center; gap: 10px; transition: gap .3s; font-weight: 500; }
+    .svc-cta::after { content: '→'; }
+    .svc-cta:hover { gap: 18px; }
 
-    .dance-cta { display:grid; grid-template-columns:1fr 1fr; }
-    .dance-img { min-height:420px; background:url('images/dance.jpg') center/cover no-repeat; background-color:#180830; }
-    .dance-text { padding:72px 60px; background:linear-gradient(135deg,rgba(147,51,234,.08),var(--bg)); display:flex; flex-direction:column; justify-content:center; }
-    .dance-text h2 { font-family:'Cormorant Garamond',serif; font-size:clamp(34px,4vw,56px); font-weight:300; line-height:1.0; margin-bottom:14px; }
-    .dance-text h2 em { font-style:italic; color:var(--gold); }
-    .dance-text p { font-size:14px; color:var(--muted); line-height:1.85; margin-bottom:6px; font-weight:300; }
-    .dance-detail { font-size:11px; letter-spacing:.06em; color:rgba(153,153,153,.65); margin-bottom:30px; line-height:1.7; }
+    /* Bartending — deep crimson bg */
+    .svc-bar { background: #170308; }
+    .svc-bar .svc-visual { background: #0F0205; }
+    .svc-bar .svc-body { background: #170308; }
+    .svc-bar .svc-tag { color: #FCA5A5; }
+    .svc-bar .svc-title em { color: #FCA5A5; }
+    .svc-bar .svc-cta { color: #FCA5A5; }
 
-    .book-strip { background:var(--purple); padding:72px 60px; text-align:center; }
-    .book-strip p { font-size:12px; letter-spacing:.28em; text-transform:uppercase; color:rgba(255,255,255,.55); margin-bottom:20px; }
-    .book-strip h2 { font-family:'Cormorant Garamond',serif; font-size:clamp(30px,4vw,56px); font-weight:300; color:#fff; line-height:1.1; margin-bottom:32px; }
-    .book-strip h2 em { font-style:italic; color:var(--gold); }
-    .btn-dark { background:#000; color:#fff; }
-    .btn-dark:hover { background:#111; transform:translateY(-2px); }
+    /* Dance — deep purple/midnight */
+    .svc-dance { background: #0E0528; }
+    .svc-dance .svc-visual { background: #09031A; }
+    .svc-dance .svc-body { background: #0E0528; }
+    .svc-dance .svc-tag { color: var(--pink2); }
+    .svc-dance .svc-title em { color: var(--pink2); }
+    .svc-dance .svc-cta { color: var(--pink2); }
 
-    @media(max-width:860px){
-      .hero{grid-template-columns:1fr;}
-      .hero-img{min-height:55vh;}
-      .hero-img::after{background:linear-gradient(to bottom,transparent 30%,var(--bg) 100%);}
-      .hero-text{padding:40px 24px 60px;}
-      .svc-row{grid-template-columns:1fr;min-height:auto;}
-      .svc-row.flip{direction:ltr;}
-      .svc-visual{min-height:260px;}
-      .svc-info{padding:36px 24px;}
-      .about-split{grid-template-columns:1fr;}
-      .about-img{min-height:280px;order:-1;}
-      .about-text{padding:52px 24px;}
-      .dance-cta{grid-template-columns:1fr;}
-      .dance-img{min-height:260px;order:-1;}
-      .dance-text{padding:52px 24px;}
-      .book-strip{flex-direction:column;text-align:center;padding:52px 24px;}
-      .hero-cred{left:24px;}
+    /* Culinary — deep warm maroon */
+    .svc-cul { background: #180C02; }
+    .svc-cul .svc-visual { background: #100800; }
+    .svc-cul .svc-body { background: #180C02; }
+    .svc-cul .svc-tag { color: #FCD34D; }
+    .svc-cul .svc-title em { color: #FCD34D; }
+    .svc-cul .svc-cta { color: #FCD34D; }
+
+    /* ABOUT */
+    .about { display: grid; grid-template-columns: 1fr 1fr; }
+    .about-photo { overflow: hidden; min-height: 560px; }
+    .about-photo img { width: 100%; height: 100%; object-fit: cover; object-position: center top; display: block; }
+    .about-copy { padding: 80px 64px; background: var(--bg2); display: flex; flex-direction: column; justify-content: center; }
+    .about-eyebrow { font-size: 10px; letter-spacing: .34em; text-transform: uppercase; color: var(--purple2); margin-bottom: 20px; display: block; }
+    .about-h2 { font-family: 'Playfair Display', serif; font-size: clamp(36px, 4vw, 58px); font-weight: 700; line-height: 1.0; margin-bottom: 24px; }
+    .about-h2 em { font-style: italic; color: var(--pink2); font-weight: 400; }
+    .about-p { font-size: 14px; color: var(--muted); line-height: 1.9; margin-bottom: 14px; font-weight: 300; }
+    .about-meta { font-size: 11px; letter-spacing: .14em; color: rgba(255,248,240,.2); margin-top: 24px; }
+
+    /* BRAND LOGOS */
+    .brands { padding: 88px 60px; background: var(--bg); }
+    .brands-head { font-family: 'Playfair Display', serif; font-size: clamp(28px, 3.5vw, 48px); font-weight: 700; margin-bottom: 52px; }
+    .brands-head em { font-style: italic; color: var(--purple2); font-weight: 400; }
+    .brands-row { display: flex; gap: 28px; flex-wrap: wrap; }
+    .brand-pill { flex: 1; min-width: 130px; max-width: 170px; text-align: center; }
+    .brand-pill img { width: 100%; aspect-ratio: 1; object-fit: cover; border-radius: 50%; border: 2px solid rgba(147,51,234,.25); transition: border-color .3s, transform .35s; cursor: pointer; display: block; }
+    .brand-pill img:hover { border-color: var(--purple2); transform: scale(1.06); }
+    .brand-pill span { font-size: 10px; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); margin-top: 12px; display: block; }
+
+    /* CTA STRIP */
+    .cta { background: var(--pink); padding: 80px 60px; display: flex; align-items: center; justify-content: space-between; gap: 40px; }
+    .cta h2 { font-family: 'Playfair Display', serif; font-size: clamp(28px, 4vw, 52px); font-weight: 700; color: #fff; line-height: 1.05; }
+    .cta h2 em { font-style: italic; font-weight: 400; }
+    .btn-white { background: #fff; color: var(--pink); padding: 18px 44px; font-size: 11px; letter-spacing: .2em; text-transform: uppercase; text-decoration: none; font-weight: 600; transition: all .3s; font-family: 'DM Sans', sans-serif; display: inline-block; }
+    .btn-white:hover { background: var(--cream); transform: translateY(-2px); }
+
+    /* FOOTER */
+    .footer { background: #08021A; padding: 64px 60px 40px; text-align: center; border-top: 1px solid var(--line); }
+    .footer-logo { font-family: 'Playfair Display', serif; font-size: 22px; font-style: italic; color: var(--cream); display: block; margin-bottom: 10px; }
+    .footer-logo span { color: var(--purple2); font-style: normal; }
+    .footer-quote { font-size: 14px; font-style: italic; color: var(--muted); font-family: 'Playfair Display', serif; margin-bottom: 36px; }
+    .footer-phone { font-family: 'Playfair Display', serif; font-size: clamp(30px, 4vw, 50px); font-weight: 700; color: var(--cream); text-decoration: none; display: block; margin-bottom: 32px; transition: color .3s; }
+    .footer-phone:hover { color: var(--purple2); }
+    .footer-handles { display: flex; gap: 24px; flex-wrap: wrap; justify-content: center; margin-bottom: 40px; }
+    .footer-handles a { font-size: 11px; letter-spacing: .18em; text-transform: uppercase; color: var(--muted); text-decoration: none; transition: color .3s; }
+    .footer-handles a:hover { color: var(--pink2); }
+    .footer-bottom { border-top: 1px solid rgba(255,255,255,.06); padding-top: 24px; font-size: 11px; color: rgba(255,248,240,.18); }
+
+    /* MOBILE */
+    @media(max-width: 860px) {
+      .hero { grid-template-columns: 1fr; }
+      .hero-photo { min-height: 65vh; }
+      .hero-copy { padding: 40px 24px 60px; }
+      .svc { grid-template-columns: 1fr; min-height: auto; }
+      .svc.flip { direction: ltr; }
+      .svc-visual { min-height: 280px; }
+      .svc-body { padding: 48px 24px; }
+      .about { grid-template-columns: 1fr; }
+      .about-photo { min-height: 320px; order: -1; }
+      .about-copy { padding: 48px 24px; }
+      .cta { flex-direction: column; text-align: center; padding: 60px 24px; }
+      .brands { padding: 60px 24px; }
+      .intro { padding: 60px 24px; }
+      .footer { padding: 48px 24px 32px; }
+      .nav { padding: 18px 24px; }
+      .nav-links { display: none; }
     }
   </style>
 </head>
 <body>
 
-<nav class="site-nav" id="nav">
+<nav class="nav" id="nav">
   <a href="index.html" class="nav-logo">Dimplez <span>So Lovely</span></a>
   <ul class="nav-links">
     <li><a href="bartending.html">Bartending</a></li>
     <li><a href="dance.html">Dance & Fitness</a></li>
     <li><a href="culinary.html">Culinary</a></li>
     <li><a href="#about">About</a></li>
-    <li><a href="contact.html" class="nav-book btn">Book Now</a></li>
+    <li><a href="contact.html" class="nav-book">Book Now</a></li>
   </ul>
 </nav>
 
-<!-- LIGHTBOX -->
-<div class="lb-overlay" id="lb" onclick="lbClose(event)">
-  <div class="lb-inner">
-    <button class="lb-close" onclick="document.getElementById('lb').classList.remove('open')">✕</button>
-    <img id="lb-img" src="" alt="">
-    <p class="lb-caption" id="lb-cap"></p>
-  </div>
-</div>
-
+<!-- HERO -->
 <section class="hero">
-  <!-- swap src below for her video when ready -->
-  <video class="hero-video" autoplay muted loop playsinline poster="images/hero.jpg">
-    <source src="images/hero-video.mp4" type="video/mp4">
-  </video>
-  <!-- sparkle dots -->
-  <div class="spark" style="width:3px;height:3px;top:15%;left:12%;animation-duration:3.2s;animation-delay:0s;"></div>
-  <div class="spark" style="width:4px;height:4px;top:25%;left:70%;animation-duration:4s;animation-delay:.8s;"></div>
-  <div class="spark" style="width:2px;height:2px;top:55%;left:85%;animation-duration:3.5s;animation-delay:1.6s;"></div>
-  <div class="spark" style="width:3px;height:3px;top:70%;left:30%;animation-duration:4.2s;animation-delay:2.4s;"></div>
-  <div class="spark" style="width:2px;height:2px;top:20%;left:48%;animation-duration:3.8s;animation-delay:.5s;"></div>
-  <div class="spark" style="width:4px;height:4px;top:40%;left:8%;animation-duration:5s;animation-delay:2s;"></div>
-  <div class="spark" style="width:3px;height:3px;top:80%;left:62%;animation-duration:3.6s;animation-delay:1.2s;"></div>
-  <div class="spark" style="width:2px;height:2px;top:60%;left:95%;animation-duration:4.5s;animation-delay:3s;"></div>
-  <div class="hero-img"></div>
-  <div class="hero-text" id="ht">
-    <span class="ey">Dimplez So Lovely Enterprises · Chattanooga, TN</span>
-    <h1>Boss Energy.<br><em>Soulful Experience.</em></h1>
-    <div class="hero-div"></div>
-    <p class="hero-sub">Hospitality · Movement · Flavor — creating elevated, intentional experiences with confidence and style.</p>
+  <div class="hero-photo">
+    <img src="images/hero.jpg" alt="Canisha aka Dimplez">
+  </div>
+  <div class="hero-copy" id="hc">
+    <span class="hero-tag">Chattanooga, TN · Certified · Licensed · Insured</span>
+    <h1 class="hero-h1">Boss Energy.<em>Soulful Experience.</em></h1>
+    <p class="hero-sub">Canisha aka Dimplez — 20+ years turning events into memories. Bartending. Dance. Culinary. All her.</p>
     <div class="hero-btns">
-      <a href="contact.html" class="btn btn-gold">Book an Experience</a>
-      <a href="#services" class="btn btn-outline">View Services</a>
+      <a href="contact.html" class="btn-pink">Book an Experience</a>
+      <a href="#services" class="btn-ghost">See What She Does</a>
     </div>
+    <p class="hero-cred">20+ Years · Mobile Bartending · Dance Fusion Fitness · NuyoRican Culinary</p>
   </div>
-  <p class="hero-cred">Certified · Licensed · Insured · 20+ Years Experience</p>
 </section>
 
+<!-- TICKER — her IG handles -->
 <div class="ticker">
-  <div class="ticker-t">
-    <s>Mobile Bartending</s><s>Dance & Fitness</s><s>Culinary Experiences</s><s>20+ Years</s><s>Chattanooga TN</s><s>Certified & Insured</s><s>Vibes Love & Moments</s><s>NuyoRican Soul Fusion</s>
-    <s>Mobile Bartending</s><s>Dance & Fitness</s><s>Culinary Experiences</s><s>20+ Years</s><s>Chattanooga TN</s><s>Certified & Insured</s><s>Vibes Love & Moments</s><s>NuyoRican Soul Fusion</s>
+  <div class="ticker-inner">
+    <span>@dimplez_ent</span><span>@dimplez_signature_cocktailz</span><span>@exotic_fusion_fitness</span><span>@dimplez_delightful_dishez</span><span>Chattanooga TN</span><span>20+ Years</span><span>Certified & Insured</span><span>Vibes Love & Moments</span>
+    <span>@dimplez_ent</span><span>@dimplez_signature_cocktailz</span><span>@exotic_fusion_fitness</span><span>@dimplez_delightful_dishez</span><span>Chattanooga TN</span><span>20+ Years</span><span>Certified & Insured</span><span>Vibes Love & Moments</span>
   </div>
 </div>
 
-<div class="quote-band">
-  <div class="quote-band-line"></div>
-  <p class="quote-band-text">"Vibes, Love &amp; <span>Creating Memorable Moments.</span>"</p>
-  <div class="quote-band-line"></div>
+<!-- INTRO QUOTE -->
+<div class="intro">
+  <p>"I don't just show up — I <strong>transform the room.</strong> Every pour, every move, every dish tells a story."</p>
 </div>
 
-<section class="section section-dark" id="services">
-  <span class="ey">What Dimplez Does</span>
-  <h2 class="h2">Every experience,<br><em>intentional.</em></h2>
-  <div class="svc-list">
-    <div class="svc-row bartending">
-      <div class="svc-visual"><img src="images/cocktailz.jpg" alt="Bartending"></div>
-      <a href="bartending.html" class="svc-info">
-        <span class="svc-tag">Mobile Bartending & Hospitality</span>
-        <h3 class="svc-name">Craft cocktails brought<br>to your venue.</h3>
-        <p class="svc-desc">20+ years behind the bar. Weddings, corporate events, private parties — full setup, certified, licensed, and insured. Every pour is intentional.</p>
-        <span class="svc-cta">Book the Bar</span>
-      </a>
-    </div>
-    <div class="svc-row flip dance">
-      <div class="svc-visual"><img src="images/dance.jpg" alt="Dance & Fitness"></div>
-      <a href="dance.html" class="svc-info">
-        <span class="svc-tag">Dance & Fitness</span>
-        <h3 class="svc-name">Move your body.<br>Every Tuesday @ 6PM.</h3>
-        <p class="svc-desc">Dance Fusion Fitness — 1 hour, all levels, real community. 6210 Hixson Pike #112, Hixson TN. Follow @exotic_fusion_fitness for updates.</p>
-        <span class="svc-cta">Join the Class</span>
-      </a>
-    </div>
-    <div class="svc-row flip culinary">
-      <div class="svc-visual"><img src="images/culinary.jpg" alt="Culinary" style="object-position:top;"></div>
-      <a href="culinary.html" class="svc-info">
-        <span class="svc-tag">Culinary Experiences</span>
-        <h3 class="svc-name">NuyoRican soul fusion.<br>Rooted in flavor.</h3>
-        <p class="svc-desc">Dimplez Delightful Dishez — Puerto Rican flavors with NYC energy. Food experiences that feed more than just hunger. Follow @dimplez_delightful_dishez.</p>
-        <span class="svc-cta">See the Menu</span>
-      </a>
-    </div>
-  </div>
-</section>
+<!-- SERVICES -->
+<div id="services">
 
-<div class="about-split" id="about">
-  <div class="about-img"></div>
-  <div class="about-text">
-    <span class="ey">About Canisha aka Dimplez</span>
-    <h2>Meet <em>Dimplez.</em></h2>
-    <p>Master Mixologist & Professional Bartender with 20+ years of hands-on experience. Known as Dimplez, Canisha is a dynamic entrepreneur with a passion for creating unforgettable experiences through hospitality, movement, and food.</p>
-    <p>She thrives at the intersection of business and passion — transforming ideas into soulful experiences that nourish the body, mind, and spirit. NYC energy. Chattanooga roots. NuyoRican soul.</p>
-    <div class="about-creds">
-      <div><span class="cred-num">20+</span><span class="cred-label">Years Behind the Bar</span></div>
-      <div><span class="cred-num">4</span><span class="cred-label">Service Pillars</span></div>
-      <div><span class="cred-num">★★★★★</span><span class="cred-label">Client Rated</span></div>
+  <div class="svc svc-bar">
+    <div class="svc-visual"><img src="images/cocktailz.jpg" alt="Dimplez Signature Cocktailz"></div>
+    <div class="svc-body">
+      <span class="svc-tag">Mobile Bartending & Hospitality</span>
+      <h2 class="svc-title">Craft cocktails.<br><em>Your venue.</em></h2>
+      <p class="svc-text">20+ years behind the bar. Weddings, corporate events, private parties — full setup, certified, licensed, and insured. Every pour is intentional.</p>
+      <a href="bartending.html" class="svc-cta">Book the Bar</a>
     </div>
   </div>
+
+  <div class="svc svc-dance flip">
+    <div class="svc-visual"><img src="images/dance.jpg" alt="Dance with Dimplez"></div>
+    <div class="svc-body">
+      <span class="svc-tag">Dance & Fitness</span>
+      <h2 class="svc-title">Move your body.<br><em>Every Tuesday.</em></h2>
+      <p class="svc-text">Dance Fusion Fitness — 1 hour, all levels, real community. Every Tuesday @ 6PM at 6210 Hixson Pike #112, Hixson TN.</p>
+      <a href="dance.html" class="svc-cta">Join the Class</a>
+    </div>
+  </div>
+
+  <div class="svc svc-cul">
+    <div class="svc-visual"><img src="images/culinary.jpg" alt="Dimplez Delightful Dishez" style="object-position:top;"></div>
+    <div class="svc-body">
+      <span class="svc-tag">Culinary Experiences</span>
+      <h2 class="svc-title">NuyoRican soul.<br><em>Rooted in flavor.</em></h2>
+      <p class="svc-text">Dimplez Delightful Dishez — Puerto Rican flavors with NYC energy. Food that feeds more than just hunger. Follow @dimplez_delightful_dishez.</p>
+      <a href="culinary.html" class="svc-cta">See the Menu</a>
+    </div>
+  </div>
+
 </div>
 
-
-<!-- BRANDS -->
-<section class="brands-section">
-  <span class="ey">The Brand Family</span>
-  <h2 class="h2">Everything <em>Dimplez.</em></h2>
-  <div class="brands-grid">
-    <div class="brand-card pop-in" onclick="lbOpen('images/logo-main.png','Dimplez So Lovely Enterprises')">
-      <img src="images/logo-main.png" alt="Dimplez So Lovely Enterprises" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-      <span class="brand-icon" style="display:none;">✦</span>
-      <span class="brand-card-label">DSL Enterprises</span>
-    </div>
-    <div class="brand-card pop-in" onclick="lbOpen('images/logo-cocktailz.png','Dimplez Signature Cocktailz')">
-      <img src="images/logo-cocktailz.png" alt="Dimplez Signature Cocktailz" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-      <span class="brand-icon" style="display:none;">🍹</span>
-      <span class="brand-card-label">Signature Cocktailz</span>
-    </div>
-    <div class="brand-card pop-in" onclick="lbOpen('images/logo-dance.png','Dance With Dimplez')">
-      <img src="images/logo-dance.png" alt="Dance With Dimplez" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-      <span class="brand-icon" style="display:none;">💃</span>
-      <span class="brand-card-label">Dance With Dimplez</span>
-    </div>
-    <div class="brand-card pop-in" onclick="lbOpen('images/logo-dishez.png','Dimplez Delightful Dishez')">
-      <img src="images/logo-dishez.png" alt="Dimplez Delightful Dishez" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-      <span class="brand-icon" style="display:none;">🍽️</span>
-      <span class="brand-card-label">Delightful Dishez</span>
-    </div>
-    <div class="brand-card pop-in" onclick="lbOpen('images/logo-podcast.png','Talk A\'bout It w/ Dimplez')">
-      <img src="images/logo-podcast.png" alt="Talk A'bout It w/ Dimplez" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-      <span class="brand-icon" style="display:none;">🎙️</span>
-      <span class="brand-card-label">Talk A'bout It</span>
-    </div>
+<!-- ABOUT -->
+<div class="about" id="about">
+  <div class="about-photo">
+    <img src="images/hero.jpg" alt="Canisha aka Dimplez">
   </div>
-</section>
-
-<div class="dance-cta">
-  <div class="dance-img"></div>
-  <div class="dance-text">
-    <span class="ey">Dance With Dimplez</span>
-    <h2>Every Tuesday<br><em>Night @ 6PM.</em></h2>
-    <p>1-hour Dance Fusion Fitness class open to all levels. High energy, great music, real community.</p>
-    <p class="dance-detail">📍 6210 Hixson Pike #112, Hixson, TN 37343<br>IG: @exotic_fusion_fitness</p>
-    <a href="dance.html" class="btn btn-purple">Learn More</a>
+  <div class="about-copy">
+    <span class="about-eyebrow">About Canisha aka Dimplez</span>
+    <h2 class="about-h2">Meet <em>Dimplez.</em></h2>
+    <p class="about-p">Master Mixologist. Dance instructor. Chef. Entrepreneur. Canisha has spent 20+ years creating unforgettable experiences through hospitality, movement, and food.</p>
+    <p class="about-p">NYC energy. Chattanooga roots. NuyoRican soul. She doesn't just run a business — she builds community.</p>
+    <p class="about-meta">Certified · Licensed · Insured · (845) 405-5359</p>
   </div>
 </div>
 
-<div class="book-strip">
-  <p>Chattanooga, TN · (845) 405-5359</p>
+<!-- BRAND FAMILY -->
+<div class="brands">
+  <h2 class="brands-head">Everything <em>Dimplez.</em></h2>
+  <div class="brands-row">
+    <div class="brand-pill"><img src="images/logo-main.png" alt="Dimplez So Lovely Enterprises"><span>DSL Enterprises</span></div>
+    <div class="brand-pill"><img src="images/logo-cocktailz.png" alt="Dimplez Signature Cocktailz"><span>Signature Cocktailz</span></div>
+    <div class="brand-pill"><img src="images/logo-dance.png" alt="Dance With Dimplez"><span>Dance With Dimplez</span></div>
+    <div class="brand-pill"><img src="images/logo-dishez.png" alt="Dimplez Delightful Dishez"><span>Delightful Dishez</span></div>
+    <div class="brand-pill"><img src="images/logo-podcast.png" alt="Talk A'bout It w/ Dimplez"><span>Talk A'bout It</span></div>
+  </div>
+</div>
+
+<!-- CTA -->
+<div class="cta">
   <h2>Let's make your event<br><em>one they'll talk about.</em></h2>
-  <a href="contact.html" class="btn btn-gold">Book an Experience</a>
+  <a href="contact.html" class="btn-white">Book an Experience</a>
 </div>
 
-<footer class="site-footer">
-  <div class="footer-inner">
-    <div class="footer-brand">
-      <span class="flogo">Dimplez <span>So Lovely</span></span>
-      <p>"Vibes, Love & Creating Memorable Moments."</p>
-    </div>
-    <a href="tel:8454055359" class="footer-phone">(845) 405-5359</a>
-    <div class="footer-social">
-      <a href="https://instagram.com/dimplez_ent" target="_blank">@dimplez_ent</a>
-      <a href="https://instagram.com/dimplez_signature_cocktailz" target="_blank">@dimplez_signature_cocktailz</a>
-      <a href="https://instagram.com/exotic_fusion_fitness" target="_blank">@exotic_fusion_fitness</a>
-      <a href="https://instagram.com/dimplez_delightful_dishez" target="_blank">@dimplez_delightful_dishez</a>
-      <a href="mailto:dimplezsolovelyent@gmail.com">Email</a>
-    </div>
+<!-- FOOTER -->
+<footer class="footer">
+  <span class="footer-logo">Dimplez <span>So Lovely</span></span>
+  <p class="footer-quote">"Vibes, Love & Creating Memorable Moments."</p>
+  <a href="tel:8454055359" class="footer-phone">(845) 405-5359</a>
+  <div class="footer-handles">
+    <a href="https://instagram.com/dimplez_ent" target="_blank">@dimplez_ent</a>
+    <a href="https://instagram.com/dimplez_signature_cocktailz" target="_blank">@dimplez_signature_cocktailz</a>
+    <a href="https://instagram.com/exotic_fusion_fitness" target="_blank">@exotic_fusion_fitness</a>
+    <a href="https://instagram.com/dimplez_delightful_dishez" target="_blank">@dimplez_delightful_dishez</a>
+    <a href="mailto:dimplezsolovelyent@gmail.com">Email</a>
   </div>
-  <div class="footer-bottom">
-    <p>© <span id="yr"></span> Dimplez So Lovely Enterprises · Chattanooga, TN</p>
-  </div>
+  <p class="footer-bottom">© <span id="yr"></span> Dimplez So Lovely Enterprises · Chattanooga, TN</p>
 </footer>
 
 <script>
   gsap.registerPlugin(ScrollTrigger);
 
-  // Nav scroll
-  const nav = document.getElementById('nav');
-  window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 60));
-
-  // Hero entrance
-  gsap.from('#ht > *', {opacity:0,y:32,duration:.9,stagger:.15,ease:'power3.out',delay:.25});
-
-  // Scroll reveals
-  gsap.from('.svc-row', {scrollTrigger:{trigger:'.svc-list',start:'top 82%'},opacity:0,y:40,duration:.7,stagger:.12,ease:'power2.out'});
-  gsap.from('.about-text > *', {scrollTrigger:{trigger:'.about-text',start:'top 80%'},opacity:0,y:28,duration:.7,stagger:.1,ease:'power2.out'});
-  gsap.from('.pull-quote', {scrollTrigger:{trigger:'.testi-wrap',start:'top 80%'},opacity:0,y:32,duration:.9,ease:'power2.out'});
-  gsap.from('.dance-text > *', {scrollTrigger:{trigger:'.dance-text',start:'top 82%'},opacity:0,x:-28,duration:.7,stagger:.1,ease:'power2.out'});
-
-  // Brand cards pop-in with stagger
-  gsap.from('.brand-card', {
-    scrollTrigger:{trigger:'.brands-section',start:'top 80%'},
-    opacity:0, scale:.75, duration:.65, stagger:.1, ease:'back.out(1.4)'
+  window.addEventListener('scroll', () => {
+    document.getElementById('nav').classList.toggle('stuck', window.scrollY > 60);
   });
 
+  gsap.from('#hc > *', { opacity:0, y:36, duration:.9, stagger:.14, ease:'power3.out', delay:.2 });
 
-  // Lightbox
-  function lbOpen(src, cap) {
-    document.getElementById('lb-img').src = src;
-    document.getElementById('lb-cap').textContent = cap;
-    document.getElementById('lb').classList.add('open');
-    document.body.style.overflow = 'hidden';
-  }
-  function lbClose(e) {
-    if(e.target === document.getElementById('lb') || e.target.classList.contains('lb-close')) {
-      document.getElementById('lb').classList.remove('open');
-      document.body.style.overflow = '';
-    }
-  }
-  window.lbOpen = lbOpen;
-  window.lbClose = lbClose;
+  gsap.utils.toArray('.svc-body').forEach(el => {
+    gsap.from(el.children, {
+      scrollTrigger: { trigger: el, start: 'top 80%' },
+      opacity: 0, y: 28, duration: .7, stagger: .1, ease: 'power2.out'
+    });
+  });
+
+  gsap.from('.about-copy > *', {
+    scrollTrigger: { trigger: '.about', start: 'top 80%' },
+    opacity: 0, y: 28, duration: .7, stagger: .1, ease: 'power2.out'
+  });
+
+  gsap.from('.brand-pill', {
+    scrollTrigger: { trigger: '.brands', start: 'top 80%' },
+    opacity: 0, scale: .78, duration: .6, stagger: .09, ease: 'back.out(1.6)'
+  });
+
+  gsap.from('.cta > *', {
+    scrollTrigger: { trigger: '.cta', start: 'top 82%' },
+    opacity: 0, y: 24, duration: .7, stagger: .12, ease: 'power2.out'
+  });
 
   document.getElementById('yr').textContent = new Date().getFullYear();
 </script>
