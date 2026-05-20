@@ -3,773 +3,263 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Dimplez So Lovely Enterprises | Hospitality, Wellness & Lifestyle · Chattanooga, TN</title>
+  <title>Dimplez So Lovely Enterprises | Chattanooga, TN</title>
   <meta name="description" content="Boss-driven lifestyle brand blending mobile bartending, dance & fitness, spiritual wellness, and culinary experiences in Chattanooga, TN.">
-  <meta property="og:title" content="Dimplez So Lovely Enterprises">
-  <meta property="og:description" content="Where boss energy meets hospitality, movement, wellness, and flavor.">
-  <meta property="og:type" content="website">
-  <meta name="theme-color" content="#0b0519">
-
-  <script type="application/ld+json">
-  {"@context":"https://schema.org","@type":"LocalBusiness","name":"Dimplez So Lovely Enterprises","description":"Boss-driven lifestyle brand blending mobile bartending, hospitality, dance, fitness, spiritual wellness, and culinary experiences in Chattanooga, TN.","address":{"@type":"PostalAddress","addressLocality":"Chattanooga","addressRegion":"TN","addressCountry":"US"},"priceRange":"$$"}
-  </script>
-
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"LocalBusiness","name":"Dimplez So Lovely Enterprises","telephone":"845-405-5359","email":"dimplezsolovelyent@gmail.com","address":{"@type":"PostalAddress","addressLocality":"Chattanooga","addressRegion":"TN","addressCountry":"US"}}</script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="shared.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
-
   <style>
-    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    .hero { min-height:100vh; display:grid; grid-template-columns:1fr 1fr; position:relative; overflow:hidden; background:var(--bg); }
+    .hero-img { position:relative; min-height:100vh; background:url('images/hero.jpg') center top/cover no-repeat; background-color:#1a0830; }
+    .hero-img::after { content:''; position:absolute; inset:0; background:linear-gradient(to right, transparent 55%, var(--bg) 100%); }
+    .hero-text { display:flex; flex-direction:column; justify-content:center; padding:120px 60px 80px 40px; position:relative; z-index:2; }
+    .hero-text h1 { font-family:'Cormorant Garamond',serif; font-size:clamp(48px,6vw,86px); font-weight:300; line-height:.95; letter-spacing:-.02em; margin-bottom:24px; }
+    .hero-text h1 em { font-style:italic; color:var(--gold); display:block; }
+    .hero-div { width:50px; height:1px; background:var(--gold); margin-bottom:20px; opacity:.6; }
+    .hero-sub { font-size:14px; color:rgba(244,240,248,.6); line-height:1.85; margin-bottom:36px; font-weight:300; max-width:360px; }
+    .hero-btns { display:flex; gap:14px; flex-wrap:wrap; }
+    .hero-cred { position:absolute; bottom:32px; left:60px; z-index:2; font-size:11px; letter-spacing:.2em; text-transform:uppercase; color:rgba(153,153,153,.45); }
 
-    :root {
-      --bg:    #0b0519;
-      --bg2:   #110828;
-      --bg3:   #180e38;
-      --bg4:   #1f1448;
-      --vivid: #8b5cf6;
-      --mid:   #6d28d9;
-      --gold:  #d4a843;
-      --gold2: #e8c870;
-      --white: #ede9fe;
-      --muted: #9d8fc4;
-      --line:  rgba(255,255,255,0.08);
-      --line-gold: rgba(212,168,67,0.25);
-    }
+    .svc-grid { display:grid; grid-template-columns:1fr 1fr; gap:1px; background:rgba(255,255,255,.06); margin-top:56px; }
+    .svc-card { background:var(--bg2); padding:0; text-decoration:none; color:var(--white); position:relative; overflow:hidden; transition:background .35s; display:flex; flex-direction:column; }
+    .svc-card:hover { background:var(--bg3); }
+    .svc-card::after { content:''; position:absolute; bottom:0; left:0; width:0; height:2px; background:var(--gold); transition:width .45s; }
+    .svc-card:hover::after { width:100%; }
+    .svc-card-thumb { height:220px; overflow:hidden; background:linear-gradient(135deg,rgba(147,51,234,.25),rgba(14,14,14,.9)); display:flex; align-items:center; justify-content:center; }
+    .svc-card-thumb img { width:100%; height:100%; object-fit:cover; transition:transform .6s; }
+    .svc-card:hover .svc-card-thumb img { transform:scale(1.05); }
+    .svc-card-body { padding:40px; flex:1; display:flex; flex-direction:column; gap:12px; }
+    .svc-num { font-size:12px; letter-spacing:.16em; color:rgba(212,168,67,.45); }
+    .svc-name { font-family:'Cormorant Garamond',serif; font-size:30px; font-weight:300; line-height:1.1; }
+    .svc-desc { font-size:13px; color:var(--muted); line-height:1.8; font-weight:300; flex:1; }
+    .svc-arrow { font-size:11px; letter-spacing:.18em; text-transform:uppercase; color:var(--gold); margin-top:8px; }
 
-    html { scroll-behavior: smooth; }
-    body { font-family:'DM Sans',sans-serif; background:var(--bg); color:var(--white); overflow-x:hidden; }
+    .about-split { display:grid; grid-template-columns:1fr 1fr; }
+    .about-img { min-height:500px; background:url('images/cocktailz.jpg') center/cover no-repeat; background-color:#1a0830; }
+    .about-text { padding:80px 60px; background:var(--bg2); display:flex; flex-direction:column; justify-content:center; }
+    .about-text h2 { font-family:'Cormorant Garamond',serif; font-size:clamp(34px,4vw,56px); font-weight:300; line-height:1.05; margin-bottom:20px; }
+    .about-text h2 em { font-style:italic; color:var(--gold); }
+    .about-text p { font-size:14px; color:var(--muted); line-height:1.9; margin-bottom:14px; font-weight:300; }
+    .about-creds { display:flex; gap:36px; margin-top:32px; flex-wrap:wrap; }
+    .cred-num { font-family:'Cormorant Garamond',serif; font-size:44px; font-weight:300; color:var(--gold); line-height:1; display:block; }
+    .cred-label { font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:var(--muted); }
 
-    @keyframes tick  { 0%{transform:translateX(0)} 100%{transform:translateX(-50%)} }
-    @keyframes glow  { 0%,100%{opacity:.4} 50%{opacity:.9} }
-    @keyframes fadeU { from{opacity:0;transform:translateY(28px)} to{opacity:1;transform:translateY(0)} }
+    .testi-wrap { background:var(--bg3); padding:100px 60px; text-align:center; }
+    .pull-quote { max-width:740px; margin:0 auto; }
+    .pull-quote::before { content:'\201C'; font-family:'Cormorant Garamond',serif; font-size:120px; line-height:.8; color:rgba(212,168,67,.1); display:block; }
+    .pull-quote blockquote { font-family:'Cormorant Garamond',serif; font-size:clamp(20px,2.8vw,34px); font-style:italic; font-weight:300; line-height:1.55; color:rgba(244,240,248,.88); margin-bottom:24px; margin-top:4px; }
+    .pull-quote cite { font-size:11px; letter-spacing:.24em; text-transform:uppercase; color:var(--gold); font-style:normal; }
+    .stars { color:var(--gold); font-size:13px; margin-bottom:8px; }
 
-    /* ─── NAV ─── */
-    nav {
-      position:fixed; top:0; width:100%; z-index:100;
-      padding:28px 56px;
-      display:flex; align-items:center; justify-content:space-between;
-      transition:all .4s;
-    }
-    nav.on {
-      background:rgba(11,5,25,.95); backdrop-filter:blur(18px);
-      padding:16px 56px; border-bottom:1px solid var(--line-gold);
-    }
-    .logo {
-      font-family:'Cormorant Garamond',serif; font-size:19px;
-      font-weight:300; letter-spacing:.2em; text-transform:uppercase;
-      color:var(--white); text-decoration:none;
-    }
-    .logo em { font-style:normal; color:var(--gold); }
+    .dance-cta { display:grid; grid-template-columns:1fr 1fr; }
+    .dance-img { min-height:420px; background:url('images/dance.jpg') center/cover no-repeat; background-color:#180830; }
+    .dance-text { padding:72px 60px; background:linear-gradient(135deg,rgba(147,51,234,.08),var(--bg)); display:flex; flex-direction:column; justify-content:center; }
+    .dance-text h2 { font-family:'Cormorant Garamond',serif; font-size:clamp(34px,4vw,56px); font-weight:300; line-height:1.0; margin-bottom:14px; }
+    .dance-text h2 em { font-style:italic; color:var(--gold); }
+    .dance-text p { font-size:14px; color:var(--muted); line-height:1.85; margin-bottom:6px; font-weight:300; }
+    .dance-detail { font-size:11px; letter-spacing:.06em; color:rgba(153,153,153,.65); margin-bottom:30px; line-height:1.7; }
 
-    .nav-r { display:flex; gap:36px; list-style:none; align-items:center; }
-    .nav-r a {
-      font-size:11px; letter-spacing:.18em; text-transform:uppercase;
-      color:var(--muted); text-decoration:none; transition:color .3s;
-    }
-    .nav-r a:hover { color:var(--gold); }
+    .book-strip { background:var(--gold); padding:64px 60px; display:flex; align-items:center; justify-content:space-between; gap:40px; }
+    .book-strip h2 { font-family:'Cormorant Garamond',serif; font-size:clamp(26px,3.5vw,48px); font-weight:300; color:#000; line-height:1.1; }
+    .book-strip h2 em { font-style:italic; }
+    .btn-dark { background:#000; color:var(--gold); }
+    .btn-dark:hover { background:#111; transform:translateY(-2px); }
 
-    .nav-drop { position:relative; }
-    .drop-menu {
-      position:absolute; top:calc(100% + 14px); left:50%;
-      transform:translateX(-50%) translateY(-8px);
-      background:rgba(17,8,40,.97); backdrop-filter:blur(20px);
-      border:1px solid var(--line-gold); min-width:230px;
-      padding:6px 0; opacity:0; visibility:hidden;
-      transition:all .25s;
-    }
-    .nav-drop:hover .drop-menu { opacity:1; visibility:visible; transform:translateX(-50%) translateY(0); }
-    .drop-menu a {
-      display:block; padding:11px 22px; font-size:11px;
-      letter-spacing:.14em; text-transform:uppercase;
-      color:var(--muted) !important; border-left:2px solid transparent;
-      transition:all .2s;
-    }
-    .drop-menu a:hover { color:var(--gold) !important; border-left-color:var(--gold); background:rgba(255,255,255,0.03); }
-    .nav-drop > a::after { content:' ↓'; font-size:9px; opacity:.45; }
-
-    .nav-cta {
-      background:var(--gold) !important; color:#000 !important;
-      padding:11px 28px; font-weight:500 !important;
-    }
-    .nav-cta:hover { background:var(--gold2) !important; }
-
-    /* ─── HERO ─── */
-    .hero {
-      min-height:100vh; display:flex; flex-direction:column;
-      align-items:center; justify-content:center; text-align:center;
-      padding:120px 56px 80px; position:relative; overflow:hidden;
-      background: radial-gradient(ellipse 80% 80% at 50% -10%, #3b1279 0%, transparent 55%),
-                  radial-gradient(ellipse 60% 50% at 80% 80%, #1a0650 0%, transparent 60%),
-                  var(--bg);
-    }
-
-    /* animated orbs */
-    .orb {
-      position:absolute; border-radius:50%; filter:blur(80px);
-      animation:glow 6s ease-in-out infinite;
-    }
-    .orb-1 { width:500px; height:500px; background:rgba(139,92,246,.18); top:-100px; left:-100px; animation-delay:0s; }
-    .orb-2 { width:400px; height:400px; background:rgba(212,168,67,.08); bottom:-50px; right:-50px; animation-delay:3s; }
-    .orb-3 { width:300px; height:300px; background:rgba(109,40,217,.2); top:50%; left:50%; transform:translate(-50%,-50%); animation-delay:1.5s; }
-
-    .hero-inner { position:relative; z-index:2; max-width:900px; }
-    .hero-tag {
-      font-size:11px; letter-spacing:.32em; text-transform:uppercase;
-      color:var(--gold); margin-bottom:32px; display:block;
-    }
-    .hero h1 {
-      font-family:'Cormorant Garamond',serif;
-      font-size:clamp(60px,9vw,120px); font-weight:300;
-      line-height:.92; letter-spacing:-.02em; margin-bottom:36px;
-    }
-    .hero h1 em { font-style:italic; color:var(--gold); display:block; }
-
-    .hero-divider {
-      width:60px; height:1px; background:var(--gold);
-      margin:0 auto 32px; opacity:.6;
-    }
-    .hero-sub {
-      font-size:13px; letter-spacing:.12em; text-transform:uppercase;
-      color:var(--muted); margin-bottom:52px; line-height:2;
-    }
-    .hero-btns { display:flex; gap:14px; justify-content:center; flex-wrap:wrap; }
-
-    .btn {
-      padding:17px 44px; font-family:'DM Sans',sans-serif;
-      font-size:11px; letter-spacing:.2em; text-transform:uppercase;
-      text-decoration:none; font-weight:500; transition:all .3s; display:inline-block;
-    }
-    .btn-gold { background:var(--gold); color:#000; }
-    .btn-gold:hover { background:var(--gold2); transform:translateY(-2px); }
-    .btn-outline { border:1px solid rgba(255,255,255,.2); color:var(--white); }
-    .btn-outline:hover { border-color:var(--gold); color:var(--gold); transform:translateY(-2px); }
-
-    /* scroll hint */
-    .scroll-hint {
-      position:absolute; bottom:36px; left:50%; transform:translateX(-50%);
-      display:flex; flex-direction:column; align-items:center; gap:8px;
-      font-size:10px; letter-spacing:.22em; text-transform:uppercase;
-      color:rgba(157,143,196,.5); z-index:2;
-    }
-    .scroll-hint span { display:block; width:1px; height:40px; background:linear-gradient(to bottom, var(--gold), transparent); margin:0 auto; }
-
-    /* ─── TICKER ─── */
-    .ticker { background:var(--gold); padding:14px 0; overflow:hidden; white-space:nowrap; }
-    .ticker-t { display:inline-flex; animation:tick 28s linear infinite; }
-    .ticker-t s {
-      font-size:11px; letter-spacing:.22em; text-transform:uppercase;
-      color:#000; font-weight:500; padding:0 44px; text-decoration:none;
-      font-family:'DM Sans',sans-serif;
-    }
-    .ticker-t s::after { content:'✦'; margin-left:44px; }
-
-    /* ─── BRAND ─── */
-    .brand {
-      padding:100px 56px;
-      display:grid; grid-template-columns:1fr 1fr; gap:80px; align-items:start;
-      background:var(--bg2); border-bottom:1px solid var(--line);
-    }
-    .brand-left {}
-    .brand-left h2 {
-      font-family:'Cormorant Garamond',serif;
-      font-size:clamp(36px,5vw,64px); font-weight:300; line-height:1.05;
-      margin-bottom:28px;
-    }
-    .brand-left h2 em { font-style:italic; color:var(--gold); }
-    .brand-left p { font-size:14px; color:var(--muted); line-height:1.9; font-weight:300; }
-
-    .brand-right { padding-top:8px; }
-    .brand-mission {
-      font-family:'Cormorant Garamond',serif;
-      font-size:21px; font-style:italic; font-weight:300;
-      color:rgba(237,233,254,.75); line-height:1.7;
-      border-left:2px solid var(--gold); padding-left:28px;
-      margin-bottom:40px;
-    }
-    .brand-tags { display:flex; flex-wrap:wrap; gap:10px; }
-    .tag {
-      font-size:10px; letter-spacing:.18em; text-transform:uppercase;
-      border:1px solid var(--line-gold); color:var(--gold);
-      padding:7px 16px; font-weight:400;
-    }
-
-    /* ─── SERVICES ─── */
-    .services { background:var(--bg); }
-
-    .svc-header {
-      padding:80px 56px 48px;
-      display:flex; align-items:flex-end; justify-content:space-between; gap:40px;
-    }
-    .svc-header h2 {
-      font-family:'Cormorant Garamond',serif;
-      font-size:clamp(36px,5vw,64px); font-weight:300; line-height:1.05;
-    }
-    .svc-header h2 em { font-style:italic; color:var(--gold); }
-    .svc-header p { font-size:13px; color:var(--muted); line-height:1.85; max-width:320px; font-weight:300; }
-
-    .svc-item {
-      display:grid; grid-template-columns:72px 1fr 180px;
-      gap:0; border-top:1px solid var(--line);
-      padding:0 56px; cursor:default;
-      transition:background .35s;
-    }
-    .svc-item:last-child { border-bottom:1px solid var(--line); }
-    .svc-item:hover { background:rgba(139,92,246,.06); }
-
-    .svc-n {
-      font-family:'Cormorant Garamond',serif; font-size:13px;
-      color:rgba(212,168,67,.4); letter-spacing:.1em;
-      padding:44px 0; border-right:1px solid var(--line);
-      display:flex; align-items:flex-start; padding-right:32px;
-    }
-    .svc-body { padding:44px 48px 44px 0; border-right:1px solid var(--line); }
-    .svc-name {
-      font-family:'Cormorant Garamond',serif;
-      font-size:clamp(28px,3.5vw,42px); font-weight:300;
-      letter-spacing:-.01em; margin-bottom:14px; line-height:1.1;
-      transition:color .3s;
-    }
-    .svc-item:hover .svc-name { color:var(--gold); }
-    .svc-p { font-size:13px; color:var(--muted); line-height:1.85; font-weight:300; max-width:600px; }
-    .svc-meta {
-      padding:44px 0 44px 40px; display:flex; flex-direction:column;
-      gap:8px; justify-content:flex-start;
-    }
-    .svc-meta span {
-      font-size:11px; letter-spacing:.15em; text-transform:uppercase;
-      color:rgba(157,143,196,.55); line-height:1.6;
-    }
-
-    /* ─── PROCESS ─── */
-    .process {
-      background:var(--bg2); padding:100px 56px;
-      border-top:1px solid var(--line); border-bottom:1px solid var(--line);
-    }
-    .process h2 {
-      font-family:'Cormorant Garamond',serif;
-      font-size:clamp(36px,4.5vw,60px); font-weight:300;
-      margin-bottom:64px; line-height:1.05;
-    }
-    .process h2 em { font-style:italic; color:var(--gold); }
-
-    .steps-list { display:flex; flex-direction:column; }
-    .step-row {
-      display:grid; grid-template-columns:60px 1fr 1fr;
-      align-items:center; gap:48px;
-      padding:36px 0; border-top:1px solid var(--line);
-    }
-    .step-row:last-child { border-bottom:1px solid var(--line); }
-    .step-n {
-      font-family:'Cormorant Garamond',serif; font-size:48px;
-      font-weight:300; color:rgba(212,168,67,.25); line-height:1;
-    }
-    .step-title {
-      font-family:'Cormorant Garamond',serif; font-size:28px;
-      font-weight:300; letter-spacing:.01em;
-    }
-    .step-desc { font-size:13px; color:var(--muted); line-height:1.85; font-weight:300; }
-
-    .process-cta { margin-top:52px; }
-
-    /* ─── QUOTE ─── */
-    .quote-wrap {
-      background:var(--bg3); padding:100px 56px;
-      border-top:1px solid var(--line);
-    }
-    .pull-quote {
-      max-width:780px; margin:0 auto; text-align:center;
-    }
-    .pull-quote::before {
-      content:'\201C';
-      font-family:'Cormorant Garamond',serif; font-size:120px;
-      line-height:.8; color:rgba(212,168,67,.15);
-      display:block; margin-bottom:8px;
-    }
-    .pull-quote blockquote {
-      font-family:'Cormorant Garamond',serif;
-      font-size:clamp(24px,3.5vw,40px); font-style:italic;
-      font-weight:300; line-height:1.5; color:rgba(237,233,254,.88);
-      margin-bottom:32px;
-    }
-    .pull-quote cite {
-      font-size:11px; letter-spacing:.24em; text-transform:uppercase;
-      color:var(--gold); font-style:normal; font-weight:400;
-    }
-    .quote-stars { color:var(--gold); font-size:14px; letter-spacing:.08em; margin-bottom:12px; }
-
-    /* ─── MOVEMENT ─── */
-    .movement {
-      background: linear-gradient(135deg, #1e0a50 0%, #0b0519 60%);
-      border-top:1px solid rgba(139,92,246,.2);
-      border-bottom:1px solid rgba(139,92,246,.2);
-      padding:100px 56px;
-      display:grid; grid-template-columns:1fr 1fr; gap:80px; align-items:center;
-    }
-    .movement h2 {
-      font-family:'Cormorant Garamond',serif;
-      font-size:clamp(40px,5.5vw,72px); font-weight:300; line-height:1.0;
-      margin-bottom:24px;
-    }
-    .movement h2 em { font-style:italic; color:var(--gold); display:block; }
-    .movement p { font-size:14px; color:var(--muted); line-height:1.9; font-weight:300; margin-bottom:36px; }
-    .movement-visual {
-      height:380px;
-      background:linear-gradient(145deg, rgba(139,92,246,.25) 0%, rgba(11,5,25,.9) 100%);
-      border:1px solid rgba(139,92,246,.2);
-      display:flex; align-items:center; justify-content:center;
-    }
-    .movement-visual span {
-      font-family:'Cormorant Garamond',serif;
-      font-size:clamp(60px,8vw,100px); font-weight:300; font-style:italic;
-      color:rgba(212,168,67,.15); line-height:1; text-align:center;
-    }
-
-    /* ─── PODCAST ─── */
-    .podcast {
-      background:var(--bg2); padding:72px 56px;
-      display:grid; grid-template-columns:1fr 1fr; gap:72px; align-items:center;
-      border-bottom:1px solid var(--line);
-    }
-    .podcast h3 {
-      font-family:'Cormorant Garamond',serif; font-size:clamp(28px,4vw,48px);
-      font-weight:300; line-height:1.1; margin-bottom:16px;
-    }
-    .podcast h3 em { font-style:italic; color:var(--gold); }
-    .podcast p { font-size:13px; color:var(--muted); line-height:1.85; margin-bottom:28px; font-weight:300; }
-    .podcast-box {
-      height:160px; background:rgba(139,92,246,.08);
-      border:1px solid rgba(139,92,246,.2);
-      display:flex; align-items:center; justify-content:center;
-    }
-    .podcast-box span { font-size:12px; letter-spacing:.14em; text-transform:uppercase; color:rgba(157,143,196,.4); }
-
-    /* ─── FAQ ─── */
-    .faq { background:var(--bg); padding:100px 56px; }
-    .faq-inner { display:grid; grid-template-columns:1fr 1.8fr; gap:80px; margin-top:56px; }
-
-    .faq-left h3 {
-      font-family:'Cormorant Garamond',serif; font-size:clamp(28px,3.5vw,44px);
-      font-weight:300; line-height:1.2; margin-bottom:20px;
-    }
-    .faq-left h3 em { font-style:italic; color:var(--gold); }
-    .faq-left p { font-size:13px; color:var(--muted); line-height:1.85; margin-bottom:32px; font-weight:300; }
-
-    details { border-bottom:1px solid var(--line); }
-    details:first-of-type { border-top:1px solid var(--line); }
-    summary {
-      padding:24px 0; font-family:'Cormorant Garamond',serif;
-      font-size:20px; font-weight:300; cursor:pointer; list-style:none;
-      display:flex; justify-content:space-between; align-items:center;
-      transition:color .3s; letter-spacing:.01em;
-    }
-    summary::-webkit-details-marker { display:none; }
-    summary:hover { color:var(--gold); }
-    summary::after { content:'+'; font-family:'DM Sans',sans-serif; font-size:18px; color:var(--gold); transition:transform .3s; flex-shrink:0; }
-    details[open] summary { color:var(--gold); }
-    details[open] summary::after { transform:rotate(45deg); }
-    .faq-a { padding:4px 0 24px; font-size:13px; color:var(--muted); line-height:1.85; font-weight:300; }
-
-    /* ─── CONTACT ─── */
-    .contact { background:var(--bg2); padding:100px 56px; border-top:1px solid var(--line); }
-    .contact-inner { display:grid; grid-template-columns:1fr 1.5fr; gap:88px; margin-top:56px; }
-
-    .contact-left h3 {
-      font-family:'Cormorant Garamond',serif; font-size:clamp(28px,3.5vw,44px);
-      font-weight:300; line-height:1.2; margin-bottom:16px;
-    }
-    .contact-left p { font-size:13px; color:var(--muted); line-height:1.85; margin-bottom:44px; font-weight:300; }
-    .ci { margin-bottom:24px; }
-    .ci-l { font-size:10px; letter-spacing:.22em; text-transform:uppercase; color:var(--gold); margin-bottom:6px; }
-    .ci-v { font-family:'Cormorant Garamond',serif; font-size:22px; font-weight:300; }
-    .ci-v a { color:var(--white); text-decoration:none; transition:color .3s; }
-    .ci-v a:hover { color:var(--gold); }
-
-    form { display:flex; flex-direction:column; gap:12px; }
-    .fr { display:grid; grid-template-columns:1fr 1fr; gap:12px; }
-    input,select,textarea {
-      background:rgba(255,255,255,.04); border:1px solid var(--line);
-      color:var(--white); padding:15px 18px;
-      font-family:'DM Sans',sans-serif; font-size:13px; width:100%;
-      outline:none; transition:border-color .3s; appearance:none; font-weight:300;
-    }
-    input::placeholder,textarea::placeholder { color:rgba(157,143,196,.55); }
-    input:focus,select:focus,textarea:focus { border-color:rgba(212,168,67,.45); }
-    select option { background:#111; }
-    textarea { resize:vertical; min-height:110px; }
-    .sbtn {
-      background:var(--gold); color:#000; border:none;
-      padding:16px 44px; font-family:'DM Sans',sans-serif;
-      font-size:11px; letter-spacing:.2em; text-transform:uppercase;
-      font-weight:500; cursor:pointer; transition:all .3s; align-self:flex-start;
-    }
-    .sbtn:hover { background:var(--gold2); transform:translateY(-1px); }
-
-    /* ─── SECTION LABELS ─── */
-    .ey {
-      font-size:11px; letter-spacing:.28em; text-transform:uppercase;
-      color:var(--gold); margin-bottom:16px; display:block; font-weight:400;
-    }
-    .h2 {
-      font-family:'Cormorant Garamond',serif;
-      font-size:clamp(38px,5vw,68px); font-weight:300; line-height:1.05;
-    }
-    .h2 em { font-style:italic; color:var(--gold); }
-
-    /* ─── FOOTER ─── */
-    footer {
-      background:var(--bg); border-top:1px solid var(--line);
-      padding:44px 56px; display:flex; align-items:center; justify-content:space-between;
-    }
-    .flogo { font-family:'Cormorant Garamond',serif; font-size:18px; font-weight:300; letter-spacing:.18em; text-transform:uppercase; }
-    .flogo em { font-style:normal; color:var(--gold); }
-    .flinks { display:flex; gap:32px; list-style:none; }
-    .flinks a { font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:var(--muted); text-decoration:none; transition:color .3s; }
-    .flinks a:hover { color:var(--gold); }
-    .fcopy { font-size:12px; color:rgba(157,143,196,.35); }
-
-    /* ─── MOBILE ─── */
     @media(max-width:860px){
-      nav{padding:18px 24px;} nav.on{padding:14px 24px;} .nav-r{display:none;}
-      .hero{padding:100px 24px 72px;} .hero-btns{flex-direction:column;align-items:center;}
-      .brand{grid-template-columns:1fr;gap:40px;padding:72px 24px;}
-      .svc-header{flex-direction:column;gap:20px;padding:60px 24px 36px;}
-      .svc-item{grid-template-columns:40px 1fr;padding:0 24px;}
-      .svc-meta{display:none;}
-      .svc-body{padding:36px 24px 36px 0;border-right:none;}
-      .process{padding:72px 24px;}
-      .step-row{grid-template-columns:40px 1fr;gap:20px;}
-      .step-desc{display:none;}
-      .quote-wrap{padding:72px 24px;}
-      .movement{grid-template-columns:1fr;gap:36px;padding:72px 24px;}
-      .movement-visual{height:220px;order:-1;}
-      .podcast{grid-template-columns:1fr;gap:36px;padding:64px 24px;}
-      .faq{padding:72px 24px;} .faq-inner{grid-template-columns:1fr;gap:40px;}
-      .contact{padding:72px 24px;} .contact-inner{grid-template-columns:1fr;gap:40px;}
-      .fr{grid-template-columns:1fr;}
-      footer{flex-direction:column;gap:20px;text-align:center;padding:36px 24px;}
-      .flinks{flex-wrap:wrap;justify-content:center;}
+      .hero{grid-template-columns:1fr;}
+      .hero-img{min-height:55vh;}
+      .hero-img::after{background:linear-gradient(to bottom,transparent 30%,var(--bg) 100%);}
+      .hero-text{padding:40px 24px 60px;}
+      .svc-grid{grid-template-columns:1fr;}
+      .about-split{grid-template-columns:1fr;}
+      .about-img{min-height:280px;order:-1;}
+      .about-text{padding:52px 24px;}
+      .dance-cta{grid-template-columns:1fr;}
+      .dance-img{min-height:260px;order:-1;}
+      .dance-text{padding:52px 24px;}
+      .book-strip{flex-direction:column;text-align:center;padding:52px 24px;}
+      .hero-cred{left:24px;}
     }
   </style>
 </head>
 <body>
 
-<!-- NAV -->
-<nav id="nav">
-  <a href="#" class="logo">Dimplez <em>So Lovely</em></a>
-  <ul class="nav-r">
-    <li class="nav-drop">
+<nav class="site-nav" id="nav">
+  <a href="index.html" class="nav-logo">Dimplez <span>So Lovely</span></a>
+  <ul class="nav-links">
+    <li class="has-drop">
       <a href="#services">Services</a>
-      <div class="drop-menu">
-        <a href="#services">Mobile Bartending & Hospitality</a>
-        <a href="#services">Dance & Fitness</a>
-        <a href="#services">Spiritual Wellness</a>
-        <a href="#services">Culinary Experiences</a>
+      <div class="drop">
+        <a href="bartending.html">Mobile Bartending</a>
+        <a href="dance.html">Dance & Fitness</a>
+        <a href="wellness.html">Spiritual Wellness</a>
+        <a href="culinary.html">Culinary Experiences</a>
       </div>
     </li>
-    <li><a href="#process">How to Book</a></li>
-    <li><a href="#faq">FAQ</a></li>
-    <li><a href="#contact" class="nav-cta btn btn-gold">Book Now</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#testimonials">Reviews</a></li>
+    <li><a href="contact.html" class="nav-book btn">Book Now</a></li>
   </ul>
 </nav>
 
-<!-- HERO -->
-<section class="hero" id="home">
-  <div class="orb orb-1"></div>
-  <div class="orb orb-2"></div>
-  <div class="orb orb-3"></div>
-  <div class="hero-inner" id="hero-inner">
-    <span class="hero-tag" id="hero-tag">Dimplez So Lovely Enterprises · Chattanooga, TN</span>
-    <h1 id="hero-h1">
-      Boss Energy.<br>
-      <em>Soulful Experience.</em>
-    </h1>
-    <div class="hero-divider"></div>
-    <p class="hero-sub" id="hero-sub">Hospitality &nbsp;·&nbsp; Movement &nbsp;·&nbsp; Wellness &nbsp;·&nbsp; Flavor</p>
-    <div class="hero-btns" id="hero-btns">
-      <a href="#contact" class="btn btn-gold">Book an Experience</a>
+<section class="hero">
+  <div class="hero-img"></div>
+  <div class="hero-text" id="ht">
+    <span class="ey">Dimplez So Lovely Enterprises · Chattanooga, TN</span>
+    <h1>Boss Energy.<br><em>Soulful Experience.</em></h1>
+    <div class="hero-div"></div>
+    <p class="hero-sub">Hospitality · Movement · Wellness · Flavor — creating elevated, intentional experiences with confidence and style.</p>
+    <div class="hero-btns">
+      <a href="contact.html" class="btn btn-gold">Book an Experience</a>
       <a href="#services" class="btn btn-outline">View Services</a>
     </div>
   </div>
-  <div class="scroll-hint">
-    <span></span>
-    Scroll
-  </div>
+  <p class="hero-cred">Certified · Licensed · Insured · 20+ Years Experience</p>
 </section>
 
-<!-- TICKER -->
 <div class="ticker">
   <div class="ticker-t">
-    <s>Mobile Bartending</s><s>Dance & Fitness</s><s>Spiritual Wellness</s><s>Culinary Experiences</s><s>20+ Years Experience</s><s>Chattanooga TN</s><s>Elevated Hospitality</s><s>Boss Energy</s>
-    <s>Mobile Bartending</s><s>Dance & Fitness</s><s>Spiritual Wellness</s><s>Culinary Experiences</s><s>20+ Years Experience</s><s>Chattanooga TN</s><s>Elevated Hospitality</s><s>Boss Energy</s>
+    <s>Mobile Bartending</s><s>Dance & Fitness</s><s>Spiritual Wellness</s><s>Culinary Experiences</s><s>20+ Years</s><s>Chattanooga TN</s><s>Certified & Insured</s><s>Vibes Love & Moments</s>
+    <s>Mobile Bartending</s><s>Dance & Fitness</s><s>Spiritual Wellness</s><s>Culinary Experiences</s><s>20+ Years</s><s>Chattanooga TN</s><s>Certified & Insured</s><s>Vibes Love & Moments</s>
   </div>
 </div>
 
-<!-- BRAND -->
-<div class="brand" id="brand">
-  <div class="brand-left">
-    <span class="ey">The Brand</span>
-    <h2>Multi-dimensional.<br><em>Passion in motion.</em></h2>
-    <br>
-    <p>Dimplez So Lovely Enterprises is a bold lifestyle brand built on passion, purpose, and powerful execution. Rooted in luxury hospitality, elevated experiences, and authentic connection, the brand blends mobile bartending, fitness and dance instruction, spirituality, and culinary artistry into one unified vision.<br><br>Founded by a visionary entrepreneur with 20+ years behind the bar and a natural ability to lead with intention — every offering is designed to nourish the body, mind, and soul.</p>
+<section class="section section-dark" id="services">
+  <span class="ey">What We Offer</span>
+  <h2 class="h2">Four Pillars.<br><em>One Brand.</em></h2>
+  <div class="svc-grid">
+    <a href="bartending.html" class="svc-card">
+      <div class="svc-card-thumb"><img src="images/cocktailz.jpg" alt="Bartending" onerror="this.style.display='none'"></div>
+      <div class="svc-card-body">
+        <span class="svc-num">01</span>
+        <h3 class="svc-name">Mobile Bartending & Hospitality</h3>
+        <p class="svc-desc">20+ years of craft cocktails and upscale bar service. Weddings, private parties, corporate events — full bar setup brought to your venue. Certified, licensed, insured.</p>
+        <span class="svc-arrow">Explore →</span>
+      </div>
+    </a>
+    <a href="dance.html" class="svc-card">
+      <div class="svc-card-thumb"><img src="images/dance.jpg" alt="Dance & Fitness" onerror="this.style.display='none'"></div>
+      <div class="svc-card-body">
+        <span class="svc-num">02</span>
+        <h3 class="svc-name">Dance & Fitness</h3>
+        <p class="svc-desc">High-energy Dance Fusion Fitness classes every Tuesday @ 6PM in Hixson. Open to all levels. Burn calories, tone up, and have fun.</p>
+        <span class="svc-arrow">Explore →</span>
+      </div>
+    </a>
+    <a href="wellness.html" class="svc-card">
+      <div class="svc-card-thumb" style="background:linear-gradient(135deg,rgba(147,51,234,.2),rgba(14,14,14,.9));font-family:'Cormorant Garamond',serif;font-size:56px;color:rgba(212,168,67,.18);">✦</div>
+      <div class="svc-card-body">
+        <span class="svc-num">03</span>
+        <h3 class="svc-name">Spiritual Wellness</h3>
+        <p class="svc-desc">Intentional experiences centered around balance, alignment, and self-growth. Spiritual guidance, mindset support, and holistic lifestyle inspiration.</p>
+        <span class="svc-arrow">Explore →</span>
+      </div>
+    </a>
+    <a href="culinary.html" class="svc-card">
+      <div class="svc-card-thumb"><img src="images/culinary.jpg" alt="Culinary" onerror="this.parentElement.style.background='linear-gradient(135deg,rgba(212,168,67,.15),rgba(14,14,14,.9))'"></div>
+      <div class="svc-card-body">
+        <span class="svc-num">04</span>
+        <h3 class="svc-name">Culinary Experiences</h3>
+        <p class="svc-desc">NuyoRican soul fusion food experiences. Dimplez Delightful Dishez — rooted in ancestral Puerto Rican flavors with a NYC twist.</p>
+        <span class="svc-arrow">Explore →</span>
+      </div>
+    </a>
   </div>
-  <div class="brand-right">
-    <p class="brand-mission">"To create intentional, soulful experiences through hospitality, wellness, movement, spirituality, and culinary creativity that leave people feeling energized, inspired, nourished, and connected."</p>
-    <div class="brand-tags">
-      <span class="tag">Luxury Hospitality</span>
-      <span class="tag">Movement & Dance</span>
-      <span class="tag">Spiritual Wellness</span>
-      <span class="tag">Culinary Arts</span>
-      <span class="tag">NYC Flair</span>
-      <span class="tag">Chattanooga Roots</span>
+</section>
+
+<div class="about-split" id="about">
+  <div class="about-img"></div>
+  <div class="about-text">
+    <span class="ey">About Canisha aka Dimplez</span>
+    <h2>Meet <em>Dimplez.</em></h2>
+    <p>Master Mixologist & Professional Bartender with 20+ years of hands-on experience. Known as Dimplez, Canisha is a dynamic entrepreneur with a passion for creating unforgettable experiences through hospitality, movement, wellness, and food.</p>
+    <p>She thrives at the intersection of business and passion — transforming ideas into soulful experiences that nourish the body, mind, and spirit. NYC energy. Chattanooga roots. NuyoRican soul.</p>
+    <div class="about-creds">
+      <div><span class="cred-num">20+</span><span class="cred-label">Years Behind the Bar</span></div>
+      <div><span class="cred-num">4</span><span class="cred-label">Service Pillars</span></div>
+      <div><span class="cred-num">★★★★★</span><span class="cred-label">Client Rated</span></div>
     </div>
   </div>
 </div>
 
-<!-- SERVICES -->
-<section class="services" id="services">
-  <div class="svc-header">
-    <div>
-      <span class="ey">What We Offer</span>
-      <h2 style="font-family:'Cormorant Garamond',serif;font-size:clamp(36px,5vw,64px);font-weight:300;line-height:1.05;">Four Pillars.<br><em style="font-style:italic;color:var(--gold);">One Brand.</em></h2>
-    </div>
-    <p style="font-size:13px;color:var(--muted);line-height:1.85;max-width:300px;font-weight:300;">Every offering is designed with intention — to nourish the body, elevate the experience, and leave a lasting impression.</p>
-  </div>
-
-  <div class="svc-item">
-    <div class="svc-n">01</div>
-    <div class="svc-body">
-      <h3 class="svc-name">Mobile Bartending<br>& Hospitality</h3>
-      <p class="svc-p">20+ years of craft cocktail creation, upscale beverage service, and guest experience coordination. Weddings, private parties, luxury events, and corporate gatherings — full bar setup brought directly to your venue. Licensed and insured.</p>
-    </div>
-    <div class="svc-meta">
-      <span>Weddings</span>
-      <span>Private Parties</span>
-      <span>Corporate Events</span>
-      <span>Luxury Occasions</span>
-    </div>
-  </div>
-
-  <div class="svc-item">
-    <div class="svc-n">02</div>
-    <div class="svc-body">
-      <h3 class="svc-name">Dance &<br>Fitness</h3>
-      <p class="svc-p">High-energy movement experiences focused on empowerment, confidence, wellness, and fun. Dance instruction, Zumba-style sessions, group fitness classes, private instruction, and community wellness events open to all levels every Tuesday.</p>
-    </div>
-    <div class="svc-meta">
-      <span>Dance Instruction</span>
-      <span>Group Fitness</span>
-      <span>Zumba Classes</span>
-      <span>Private Sessions</span>
-    </div>
-  </div>
-
-  <div class="svc-item">
-    <div class="svc-n">03</div>
-    <div class="svc-body">
-      <h3 class="svc-name">Spiritual<br>Wellness</h3>
-      <p class="svc-p">Intentional wellness experiences centered around balance, alignment, positivity, and self-growth. Spiritual guidance, mindset and wellness support, intentional living experiences, and holistic lifestyle inspiration for everyday elevation.</p>
-    </div>
-    <div class="svc-meta">
-      <span>Spiritual Guidance</span>
-      <span>Mindset Support</span>
-      <span>Holistic Living</span>
-      <span>Self-Growth</span>
-    </div>
-  </div>
-
-  <div class="svc-item">
-    <div class="svc-n">04</div>
-    <div class="svc-body">
-      <h3 class="svc-name">Culinary<br>Experiences</h3>
-      <p class="svc-p">Food-centered experiences built around creativity, culture, connection, and nourishment. Cooking experiences, event dining moments, and soulful food presentation that feeds more than just hunger — it feeds the soul.</p>
-    </div>
-    <div class="svc-meta">
-      <span>Cooking Experiences</span>
-      <span>Event Dining</span>
-      <span>Culinary Creativity</span>
-      <span>Soulful Presentation</span>
-    </div>
-  </div>
-</section>
-
-<!-- PROCESS -->
-<section class="process" id="process">
-  <span class="ey">How It Works</span>
-  <h2>Three Steps.<br><em>That's It.</em></h2>
-  <div class="steps-list">
-    <div class="step-row">
-      <div class="step-n">1</div>
-      <div class="step-title">Submit an Inquiry</div>
-      <p class="step-desc">Fill out the contact form below with your event details — date, type, guest count, and any special requests. We read every message.</p>
-    </div>
-    <div class="step-row">
-      <div class="step-n">2</div>
-      <div class="step-title">Get Your Custom Quote</div>
-      <p class="step-desc">We'll follow up within 24 hours with a package and pricing built specifically around your event. No generic quotes.</p>
-    </div>
-    <div class="step-row">
-      <div class="step-n">3</div>
-      <div class="step-title">Pay Deposit & Lock It In</div>
-      <p class="step-desc">A deposit secures your date. We handle everything else from that point — you just show up and enjoy the experience you deserve.</p>
-    </div>
-  </div>
-  <div class="process-cta"><a href="#contact" class="btn btn-gold">Start the Process</a></div>
-</section>
-
-<!-- PULL QUOTE -->
-<div class="quote-wrap">
+<div class="testi-wrap" id="testimonials">
   <div class="pull-quote">
-    <div class="quote-stars">★★★★★</div>
-    <blockquote>"Canisha and her team made our wedding reception unforgettable. The bar setup was stunning, the energy was unmatched, and every single guest was talking about it. If you're not hiring her for your event, you're missing out."</blockquote>
+    <div class="stars">★★★★★</div>
+    <blockquote>"Canisha and her team made our event unforgettable. The bar setup was stunning, the energy was electric, and every guest was raving. If you want your event to feel like an event — call Dimplez."</blockquote>
     <cite>— Jasmine T., Wedding Client</cite>
   </div>
 </div>
 
-<!-- MOVEMENT -->
-<div class="movement">
-  <div>
-    <span class="ey">Movement & Empowerment</span>
-    <h2>Move With<br><em>Purpose.</em></h2>
-    <p>Every <strong style="color:var(--white);">Tuesday night at 6PM</strong> — 1 hour of high-energy dance fitness open to all levels. Dance instruction, Zumba, cardio, and community. Burn calories, tone up, and have fun.</p>
-    <p style="font-size:12px; color:var(--muted); margin-top:-20px; margin-bottom:28px; letter-spacing:.04em;">📍 6210 Hixson Pike #112, Hixson, TN 37343 &nbsp;·&nbsp; IG: <a href="https://instagram.com/exotic_fusion_fitness" target="_blank" style="color:var(--gold); text-decoration:none;">@exotic_fusion_fitness</a></p>
-    <a href="#contact" class="btn btn-outline">Join a Class</a>
-  </div>
-  <div class="movement-visual">
-    <span>Move.</span>
+<div class="dance-cta">
+  <div class="dance-img"></div>
+  <div class="dance-text">
+    <span class="ey">Dance With Dimplez</span>
+    <h2>Every Tuesday<br><em>Night @ 6PM.</em></h2>
+    <p>1-hour Dance Fusion Fitness class open to all levels. High energy, great music, real community.</p>
+    <p class="dance-detail">📍 6210 Hixson Pike #112, Hixson, TN 37343<br>IG: @exotic_fusion_fitness</p>
+    <a href="dance.html" class="btn btn-purple">Learn More</a>
   </div>
 </div>
 
-<!-- PODCAST -->
-<div class="podcast">
-  <div>
-    <span class="ey">On Air</span>
-    <h3>The <em>Podcast.</em></h3>
-    <p>Real talk on hospitality, entrepreneurship, and building something of your own. Canisha keeps it honest, entertaining, and worth your time.</p>
-    <a href="https://youtube.com/@TalkAboutItWDimplez" target="_blank" class="btn btn-outline">Watch on YouTube</a>
-  </div>
-  <div class="podcast-box"><span>Podcast embed coming soon</span></div>
+<div class="book-strip">
+  <h2>Ready to <em>Elevate</em><br>Your Experience?</h2>
+  <a href="contact.html" class="btn btn-dark">Book Now</a>
 </div>
 
-<!-- FAQ -->
-<section class="faq" id="faq">
-  <span class="ey">Common Questions</span>
-  <h2 class="h2">FAQ</h2>
-  <div class="faq-inner">
-    <div class="faq-left">
-      <h3>Still have<br><em>questions?</em></h3>
-      <p>We're happy to talk through your event, answer anything, and put together a custom quote — no pressure.</p>
-      <a href="#contact" class="btn btn-gold">Get in Touch</a>
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <span class="flogo">Dimplez <span>So Lovely</span></span>
+      <p>Boss-driven lifestyle brand blending hospitality, movement, wellness, and flavor in Chattanooga, TN.<br><br>"Vibes, Love & Creating Memorable Moments 💜"</p>
     </div>
-    <div>
-      <details>
-        <summary>How far in advance should I book?</summary>
-        <p class="faq-a">4–6 weeks for smaller events, 3–6 months for weddings or large corporate events. Popular dates fill fast — a deposit locks yours in immediately.</p>
-      </details>
-      <details>
-        <summary>Do you provide bar equipment?</summary>
-        <p class="faq-a">Yes — we bring everything for a full mobile bar setup including equipment, mixers, garnishes, and ice. You can also provide your own alcohol and we handle the rest.</p>
-      </details>
-      <details>
-        <summary>Are you licensed and insured?</summary>
-        <p class="faq-a">Absolutely. Fully licensed and insured to serve alcohol at private and public events in Tennessee. Documentation available on request.</p>
-      </details>
-      <details>
-        <summary>What areas do you serve?</summary>
-        <p class="faq-a">Based in Chattanooga, TN — serving Hamilton County, Bradley County, and North Georgia. Travel fees may apply for events 30+ miles out.</p>
-      </details>
-      <details>
-        <summary>How do deposits and payments work?</summary>
-        <p class="faq-a">A deposit secures your date. Remaining balance due on or before the event. We accept credit cards, Zelle, and Cash App.</p>
-      </details>
-      <details>
-        <summary>Can you do non-alcoholic events?</summary>
-        <p class="faq-a">Yes — full mocktail and signature non-alcoholic beverage service available. Perfect for corporate events, family gatherings, or any dry event.</p>
-      </details>
+    <div class="footer-col">
+      <h4>Services</h4>
+      <ul>
+        <li><a href="bartending.html">Mobile Bartending</a></li>
+        <li><a href="dance.html">Dance & Fitness</a></li>
+        <li><a href="wellness.html">Spiritual Wellness</a></li>
+        <li><a href="culinary.html">Culinary Experiences</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Connect</h4>
+      <ul>
+        <li><a href="https://instagram.com/dimplez_ent" target="_blank">@dimplez_ent</a></li>
+        <li><a href="https://instagram.com/dimplez_signature_cocktailz" target="_blank">@dimplez_signature_cocktailz</a></li>
+        <li><a href="https://instagram.com/exotic_fusion_fitness" target="_blank">@exotic_fusion_fitness</a></li>
+        <li><a href="https://youtube.com" target="_blank">Talk A'bout It w/Dimplez</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <ul>
+        <li><a href="tel:8454055359">(845) 405-5359</a></li>
+        <li><a href="mailto:dimplezsolovelyent@gmail.com">dimplezsolovelyent@gmail.com</a></li>
+        <li><a href="contact.html">Book an Experience</a></li>
+      </ul>
     </div>
   </div>
-</section>
-
-<!-- CONTACT -->
-<section class="contact" id="contact">
-  <span class="ey">Let's Make It Happen</span>
-  <h2 class="h2">Book Your<br><em>Experience.</em></h2>
-  <div class="contact-inner">
-    <div class="contact-left">
-      <h3>Ready to elevate<br>your event?</h3>
-      <p>Fill out the form and Canisha will follow up within 24 hours. A deposit secures your date. "Vibes, Love & Creating Memorable Moments."</p>
-      <div class="ci"><div class="ci-l">Phone / Text</div><div class="ci-v"><a href="tel:8454055359">(845) 405-5359</a></div></div>
-      <div class="ci"><div class="ci-l">Email</div><div class="ci-v"><a href="mailto:dimplezsolovelyent@gmail.com" style="font-size:15px;">dimplezsolovelyent@gmail.com</a></div></div>
-      <div class="ci"><div class="ci-l">Instagram</div><div class="ci-v"><a href="https://instagram.com/dimplez_ent" target="_blank">@dimplez_ent</a></div></div>
-      <div class="ci"><div class="ci-l">YouTube</div><div class="ci-v"><a href="https://youtube.com/@TalkAboutItWDimplez" target="_blank">Talk A'bout It w/Dimplez</a></div></div>
-      <div class="ci"><div class="ci-l">Location</div><div class="ci-v" style="font-size:16px;">Chattanooga / Hixson, TN & Surrounding Areas</div></div>
-    </div>
-    <div>
-      <iframe
-        src="https://docs.google.com/forms/d/e/1FAIpQLSdzfyL38ue0LllK9pYwXzj1Yt167IIXYy6Tyku_TKlSZP9L0A/viewform?embedded=true"
-        width="100%"
-        height="820"
-        frameborder="0"
-        marginheight="0"
-        marginwidth="0"
-        style="background:transparent; border:1px solid rgba(255,255,255,0.08); display:block;">
-        Loading form...
-      </iframe>
+  <div class="footer-bottom">
+    <p>© <span id="yr"></span> Dimplez So Lovely Enterprises. All rights reserved.</p>
+    <div class="footer-social">
+      <a href="https://instagram.com/dimplez_ent" target="_blank">Instagram</a>
+      <a href="https://youtube.com" target="_blank">YouTube</a>
+      <a href="mailto:dimplezsolovelyent@gmail.com">Email</a>
     </div>
   </div>
-</section>
-
-<footer>
-  <div class="flogo">Dimplez <em>So Lovely</em></div>
-  <ul class="flinks">
-    <li><a href="#services">Services</a></li>
-    <li><a href="#process">Book</a></li>
-    <li><a href="#faq">FAQ</a></li>
-    <li><a href="#contact">Contact</a></li>
-  </ul>
-  <p class="fcopy">© <span id="yr"></span> Dimplez So Lovely Enterprises. All rights reserved.</p>
 </footer>
 
 <script>
   gsap.registerPlugin(ScrollTrigger);
-
-  // Nav
   const nav = document.getElementById('nav');
-  window.addEventListener('scroll', () => nav.classList.toggle('on', window.scrollY > 60));
-
-  // Hero
-  const tl = gsap.timeline({delay:.15});
-  tl.from('#hero-tag',  {opacity:0, y:16, duration:.8, ease:'power2.out'})
-    .from('#hero-h1',   {opacity:0, y:36, duration:1,  ease:'power3.out'}, '-=.4')
-    .from('#hero-sub',  {opacity:0, y:20, duration:.7, ease:'power2.out'}, '-=.4')
-    .from('#hero-btns', {opacity:0, y:16, duration:.7, ease:'power2.out'}, '-=.4');
-
-  // Scroll reveals
-  const reveal = (sel, opts={}) => gsap.from(sel, {
-    scrollTrigger:{trigger:sel, start:'top 82%'},
-    opacity:0, y:32, duration:.75, ease:'power2.out', ...opts
-  });
-
-  reveal('#brand .brand-left');
-  reveal('#brand .brand-right', {delay:.15});
-  reveal('.svc-item', {stagger:.1, y:0, x:-20});
-  reveal('.step-row', {stagger:.12});
-  reveal('.pull-quote', {y:24});
-  reveal('.movement > div:first-child');
-  reveal('.movement-visual', {delay:.15});
-  reveal('details', {stagger:.07});
-
-  // Form
-  document.getElementById('cform').addEventListener('submit', e => {
-    e.preventDefault();
-    const b = e.target.querySelector('.sbtn');
-    b.textContent = "Sent — We'll Be in Touch!";
-    b.style.background = '#2a9d5c';
-    b.style.color = '#fff';
-    b.disabled = true;
-  });
-
+  window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 60));
+  gsap.from('#ht > *', {opacity:0,y:28,duration:.8,stagger:.14,ease:'power2.out',delay:.2});
+  gsap.from('.svc-card', {scrollTrigger:{trigger:'.svc-grid',start:'top 82%'},opacity:0,y:32,duration:.7,stagger:.1,ease:'power2.out'});
+  gsap.from('.about-text > *', {scrollTrigger:{trigger:'.about-text',start:'top 80%'},opacity:0,y:24,duration:.7,stagger:.1,ease:'power2.out'});
   document.getElementById('yr').textContent = new Date().getFullYear();
 </script>
 </body>
