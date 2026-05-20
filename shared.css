@@ -3,16 +3,24 @@
 
 :root {
   --bg:    #0e0e0e;
-  --bg2:   #161616;
-  --bg3:   #1d1d1d;
-  --purple:#9333ea;
-  --purple-dim: rgba(147,51,234,0.12);
-  --gold:  #d4a843;
-  --gold2: #e8c870;
+  --bg2:   #141414;
+  --bg3:   #1a1a1a;
+  /* brand primaries pulled from her logos */
+  --purple:  #9333ea;
+  --purple2: #a855f7;
+  --pink:    #d946ef;
+  --crimson: #9b1b30;
+  --crimson2:#c0283f;
+  --amber:   #c8860a;
+  --amber2:  #e09e20;
+  /* semantic aliases */
+  --accent:  var(--purple);
+  --gold:    #d4a843;   /* kept for subtle decorative use only */
+  --gold2:   #e8c870;
   --white: #f4f0f8;
   --muted: #999;
   --line:  rgba(255,255,255,0.08);
-  --line-gold: rgba(212,168,67,0.22);
+  --line-purple: rgba(147,51,234,0.25);
 }
 
 html { scroll-behavior: smooth; }
@@ -30,25 +38,25 @@ body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--w
 }
 .site-nav.scrolled {
   background: rgba(14,14,14,0.96); backdrop-filter: blur(20px);
-  padding: 14px 56px; border-bottom: 1px solid var(--line-gold);
+  padding: 14px 56px; border-bottom: 1px solid var(--line-purple);
 }
 .nav-logo {
   font-family: 'Cormorant Garamond', serif; font-size: 18px;
   font-weight: 300; letter-spacing: 0.18em; text-transform: uppercase;
   color: var(--white); text-decoration: none;
 }
-.nav-logo span { color: var(--gold); }
+.nav-logo span { color: var(--purple2); }
 .nav-links { display: flex; gap: 24px; list-style: none; align-items: center; }
 .nav-links a {
   font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase;
   color: var(--muted); text-decoration: none; transition: color 0.3s; white-space: nowrap;
 }
-.nav-links a:hover, .nav-links a.active { color: var(--gold); }
+.nav-links a:hover, .nav-links a.active { color: var(--purple2); }
 .nav-book {
-  background: var(--gold) !important; color: #000 !important;
+  background: var(--purple) !important; color: #fff !important;
   padding: 10px 26px; font-weight: 500 !important;
 }
-.nav-book:hover { background: var(--gold2) !important; }
+.nav-book:hover { background: var(--purple2) !important; }
 
 /* ─── BUTTONS ─── */
 .btn {
@@ -64,13 +72,13 @@ body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--w
 .btn-purple:hover { background: #7c22d4; transform: translateY(-2px); }
 
 /* ─── TICKER ─── */
-.ticker { background: var(--gold); padding: 13px 0; overflow: hidden; white-space: nowrap; }
+.ticker { background: var(--purple); padding: 13px 0; overflow: hidden; white-space: nowrap; }
 .ticker-t { display: inline-flex; animation: tick 30s linear infinite; }
 .ticker-t s {
   font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase; font-weight: 500;
-  color: #000; padding: 0 44px; text-decoration: none; font-family: 'DM Sans', sans-serif;
+  color: rgba(255,255,255,0.9); padding: 0 44px; text-decoration: none; font-family: 'DM Sans', sans-serif;
 }
-.ticker-t s::after { content: '✦'; margin-left: 44px; }
+.ticker-t s::after { content: '✦'; margin-left: 44px; color: var(--pink); }
 
 /* ─── PAGE HERO (service pages) ─── */
 .page-hero {
@@ -88,18 +96,18 @@ body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--w
   background: linear-gradient(to top, rgba(14,14,14,0.95) 30%, rgba(14,14,14,0.5) 70%, transparent 100%);
 }
 .page-hero-content { position: relative; z-index: 2; max-width: 700px; }
-.page-hero .ey { font-size: 11px; letter-spacing: 0.28em; text-transform: uppercase; color: var(--gold); margin-bottom: 16px; display: block; }
+.page-hero .ey { font-size: 11px; letter-spacing: 0.28em; text-transform: uppercase; color: var(--purple2); margin-bottom: 16px; display: block; }
 .page-hero h1 {
   font-family: 'Cormorant Garamond', serif; font-size: clamp(44px, 7vw, 88px);
   font-weight: 300; line-height: 0.95; letter-spacing: -0.02em; margin-bottom: 24px;
 }
-.page-hero h1 em { font-style: italic; color: var(--gold); }
+.page-hero h1 em { font-style: italic; color: var(--purple2); }
 .page-hero p { font-size: 15px; color: rgba(244,240,248,0.7); line-height: 1.8; max-width: 540px; font-weight: 300; margin-bottom: 36px; }
 
 /* ─── SECTION HELPERS ─── */
-.ey { font-size: 11px; letter-spacing: 0.28em; text-transform: uppercase; color: var(--gold); margin-bottom: 16px; display: block; font-weight: 400; }
+.ey { font-size: 11px; letter-spacing: 0.28em; text-transform: uppercase; color: var(--purple2); margin-bottom: 16px; display: block; font-weight: 400; }
 .h2 { font-family: 'Cormorant Garamond', serif; font-size: clamp(38px, 5vw, 68px); font-weight: 300; line-height: 1.05; }
-.h2 em { font-style: italic; color: var(--gold); }
+.h2 em { font-style: italic; color: var(--purple2); }
 .section { padding: 100px 60px; }
 .section-dark { background: var(--bg); }
 .section-mid  { background: var(--bg2); }
