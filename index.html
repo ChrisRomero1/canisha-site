@@ -75,7 +75,7 @@
     .svc-card::after { content:''; position:absolute; bottom:0; left:0; width:0; height:2px; background:var(--gold); transition:width .45s; }
     .svc-card:hover::after { width:100%; }
     .svc-card-thumb { height:220px; overflow:hidden; background:linear-gradient(135deg,rgba(147,51,234,.25),rgba(14,14,14,.9)); display:flex; align-items:center; justify-content:center; }
-    .svc-card-thumb img { width:100%; height:100%; object-fit:cover; transition:transform .6s; }
+    .svc-card-thumb img { width:100%; height:100%; object-fit:contain; transition:transform .6s; }
     .svc-card:hover .svc-card-thumb img { transform:scale(1.05); }
     .svc-card-body { padding:40px; flex:1; display:flex; flex-direction:column; gap:12px; }
     .svc-num { font-size:12px; letter-spacing:.16em; color:rgba(212,168,67,.45); }
